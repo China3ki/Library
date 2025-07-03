@@ -8,5 +8,14 @@ namespace Library
 {
     internal class Library
     {
+        private bool _run = false;
+        public void RunApp()
+        {
+            _run = true;
+            do
+            {
+
+            } while (_run);
+        }
     }
 }
