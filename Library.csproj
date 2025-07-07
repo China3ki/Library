@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="FormController">
+      <HintPath>..\..\FormController\FormController\bin\Debug\net8.0\FormController.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

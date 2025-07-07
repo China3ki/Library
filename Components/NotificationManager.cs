@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,7 @@ namespace Library.Components
         public void DisplayNotification()
         {
             if (_notifications.Count == 0) throw new InvalidOperationException("Notifications list cannot be empty!");
+            Debug.WriteLine("A");
             for(int i = 0; i < _notifications.Count; i++)
             {
                 Console.ForegroundColor = _notificationsFontColor[i];

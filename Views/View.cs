@@ -1,19 +1,37 @@
 ﻿using Library.Components;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Library.Views
 {
-    internal class View(List<string> menu)
+    internal class View()
     {
-        private NotificationManager _notificationManager = new();
-        private List<string> _menu = menu;
+        protected PositionManager _positionManager = new();
+        protected NotificationManager _notificationManager = new();
+        protected RenderManager _renderManager = new();
         public virtual void InitView()
         {
-            RenderBorder();
+            if (_renderManager.Menu.Count == 0) throw new InvalidOperationException("Menu list cannot be empty!");
+            _positionManager.MaxPosition = _renderManager.Menu.Count;
+            _renderManager.InitMenu();
+            MoveAroundMenu();
+            Console.Clear();
+        }
+        public void AddMenuOptions(string name, ConsoleColor fontColor, ConsoleColor backgroundColor)
+        {
+            _renderManager.AddMenuOptions(name, fontColor, backgroundColor);
+        }
+        public void AddMenuOptions(string name, ConsoleColor fontColor)
+        {
+            _renderManager.AddMenuOptions(name, fontColor, ConsoleColor.Black);
+        }
+        public void AddMenuOptions(string name)
+        {
+            _renderManager.AddMenuOptions(name, ConsoleColor.White, ConsoleColor.Black);
         }
         /// <summary>
         /// Adds a notification with specified text and display colors.
@@ -23,7 +41,7 @@ namespace Library.Views
         /// <param name="notification">The text of the notification to be added. Cannot be null or empty.</param>
         /// <param name="fontColor">The color of the text for the notification. Must be a valid <see cref="ConsoleColor"/> value.</param>
         /// <param name="backgroundColor">The background color for the notification. Must be a valid <see cref="ConsoleColor"/> value.</param>
-        public void AddNotification(string notification, ConsoleColor fontColor, ConsoleColor backgroundColor)
+        protected void AddNotification(string notification, ConsoleColor fontColor, ConsoleColor backgroundColor)
         {
             _notificationManager.AddNotification(notification, fontColor, backgroundColor);
         }
@@ -34,7 +52,7 @@ namespace Library.Views
         /// cref="ConsoleColor.Black"/>.</remarks>
         /// <param name="notification">The notification message to add. Cannot be null or empty.</param>
         /// <param name="fontColor">The font color to use for displaying the notification.</param>
-        public void AddNotification(string notification, ConsoleColor fontColor)
+        protected void AddNotification(string notification, ConsoleColor fontColor)
         {
             _notificationManager.AddNotification(notification, fontColor, ConsoleColor.Black);
         }
@@ -44,41 +62,28 @@ namespace Library.Views
         /// <remarks>The notification is added with a default font color of <see
         /// cref="ConsoleColor.White"/>  and a default background color of <see cref="ConsoleColor.Black"/>.</remarks>
         /// <param name="notification">The notification message to add. Cannot be null or empty.</param>
-        public void AddNotification(string notification)
+        protected void AddNotification(string notification)
         {
             _notificationManager.AddNotification(notification, ConsoleColor.White, ConsoleColor.Black);
         }
-        protected virtual void RenderView()
+        protected int MoveAroundMenu()
         {
-            for(int i = 0; i < _menu.Count; i++)
+            ConsoleKey key;
+            int position;
+            do
             {
-                Console.SetCursorPosition(1, i);
-                Console.Write(_menu[i]);
-            }
-        }
-        /// <summary>
-        /// Renders a border around the edges of the console window using box-drawing characters.
-        /// </summary>
-        /// <remarks>The border is drawn using Unicode box-drawing characters, including corners,
-        /// horizontal lines,  and vertical lines. This method assumes the console window dimensions are accessible via 
-        /// <see cref="Console.WindowWidth"/> and <see cref="Console.WindowHeight"/>.</remarks>
-        protected void RenderBorder()
-        {
-            int width = Console.WindowWidth - 1;
-            int height = Console.WindowHeight - 1;
-            for(int x = 0; x < Console.WindowWidth; x++)
-            {
-                for(int y = 0; y < Console.WindowHeight; y++)
+                key = _positionManager.ChangePosition();
+                position = _positionManager.Position;
+                if (key == ConsoleKey.UpArrow)
                 {
-                    Console.SetCursorPosition(x, y);
-                    if (x == 0 && y == 0) Console.Write('╔');
-                    else if (x == 0 && y == height) Console.Write('╚');
-                    else if (x == width && y == 0) Console.Write('╗');
-                    else if (x == width && y == height) Console.Write('╝');
-                    else if ((x > 0 && x < width) && (y == 0 || y == height)) Console.Write('═');
-                    else if ((x == 0 || x == width) && (y > 0 && y < height)) Console.Write('║');
+                    _renderManager.ChangeColorOfMenu(position, position + 1);
                 }
-            }
-        }
+                else if (key == ConsoleKey.DownArrow)
+                {
+                     _renderManager.ChangeColorOfMenu(position, position - 1);
+                }
+            } while (key != ConsoleKey.Enter);
+            return position;
+        } 
     }
 }

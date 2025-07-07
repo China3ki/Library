@@ -5,4 +5,5 @@ enum ViewsList
     Start,
     Login,
     Register,
+    Exit
 }

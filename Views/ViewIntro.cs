@@ -26,6 +26,8 @@ namespace Library.Views
         {
             RenderIntro();
             LoadingIntro();
+            Thread.Sleep(300);
+            Console.Clear();
         }
         /// <summary>
         /// Renders the introductory logo to the console.
