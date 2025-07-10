@@ -18,7 +18,7 @@ namespace Library.Views
             if (_renderManager.Menu.Count == 0) throw new InvalidOperationException("Menu list cannot be empty!");
             _positionManager.MaxPosition = _renderManager.Menu.Count;
             _renderManager.InitMenu();
-            MoveAroundMenu();
+            HandleMenuNavigation();
             Console.Clear();
         }
         public void AddMenuOptions(string name, ConsoleColor fontColor, ConsoleColor backgroundColor)
@@ -66,7 +66,7 @@ namespace Library.Views
         {
             _notificationManager.AddNotification(notification, ConsoleColor.White, ConsoleColor.Black);
         }
-        protected int MoveAroundMenu()
+        protected int HandleMenuNavigation()
         {
             ConsoleKey key;
             int position;

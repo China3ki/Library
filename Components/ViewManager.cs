@@ -25,6 +25,10 @@ namespace Library.Components
                     ViewLogin login = new();
                     login.InitView();
                     return login.NextView();
+                case ViewsList.Register:
+                    ViewRegister register = new();
+                    register.InitView();
+                    return register.NextView();
                 default:
                     throw new NotImplementedException("a");
             }

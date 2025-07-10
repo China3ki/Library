@@ -28,6 +28,25 @@ namespace Library.Components
             _notificationsBackgroundColor.Add(backgroundColor);
         }
         /// <summary>
+        /// Clears all notifications from the console display and removes them from the internal notification list.
+        /// </summary>
+        /// <remarks>This method erases the notification area at the bottom of the console window and
+        /// resets the internal collection of notifications. The cleared area includes a border on the left and right
+        /// edges.</remarks>
+        public void ClearNotification()
+        {
+            for (int x = 0; x < Console.WindowWidth; x++)
+            {
+                for (int y = 0; y < _notifications.Count + 1; y++)
+                {
+                    Console.SetCursorPosition(x, Console.WindowHeight - 2 - _notifications.Count + y);
+                    if (x == 0 || x == Console.WindowWidth - 1) Console.Write('║');
+                    else Console.Write(' ');
+                }
+            }
+            _notifications.Clear();
+        }
+        /// <summary>
         /// Displays all notifications in the console with their respective foreground and background colors.
         /// </summary>
         /// <remarks>This method renders notifications at the bottom of the console window, with each
@@ -37,7 +56,6 @@ namespace Library.Components
         public void DisplayNotification()
         {
             if (_notifications.Count == 0) throw new InvalidOperationException("Notifications list cannot be empty!");
-            Debug.WriteLine("A");
             for(int i = 0; i < _notifications.Count; i++)
             {
                 Console.ForegroundColor = _notificationsFontColor[i];

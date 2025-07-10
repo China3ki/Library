@@ -1,6 +1,6 @@
 ﻿using Library.Components;
 using Library.Views;
-
+using MySql.Data.MySqlClient;
 namespace Library
 {
     internal class Program
