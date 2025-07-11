@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Library.Views.SingleMenu;
 using MySql.Data.MySqlClient;
 namespace Library.Components
 {
     internal class ValidationManager
     {    
-        private string _sqlStringConnection = "server=localhost;uid=root;database=library";
-        public bool CheckDataInInputExist(string nickname, string password, string passwordRepeat)
+        static private string _sqlStringConnection = "server=localhost;uid=root;database=library";
+        static public bool CheckDataInInputExist(string nickname, string password, string passwordRepeat)
         {
             return nickname.Length != 0 && password.Length != 0 && passwordRepeat.Length != 0;
         }
-        public bool CheckThePassword(string nickname, string password)
+        static public bool CheckThePassword(string nickname, string password)
         {
             try
             {
@@ -25,15 +26,17 @@ namespace Library.Components
                     command.Parameters.AddWithValue("nickname", nickname);
                     command.Parameters.AddWithValue("password", password);
                     int passwordDb = (int)command.ExecuteScalar();
+                    connection.Close();
                     return passwordDb != 0;
                 }
             }
-            catch
+            catch(Exception message)
             {
-                throw new NotImplementedException("a");
+                DisplayError();
+                throw new Exception(message.Message);
             }
         }
-        public bool CheckNicknameExist(string nickname)
+        static public bool CheckNicknameExist(string nickname)
         {
             try
             {
@@ -43,22 +46,29 @@ namespace Library.Components
                     MySqlCommand command = new("Select COUNT(user_nickname) FROM users WHERE user_nickname = @nickname", connection);
                     command.Parameters.AddWithValue("nickname", nickname);
                     int nicknameDb = Convert.ToInt32(command.ExecuteScalar());
+                    connection.Close();
                     return nicknameDb == 0;
                 }
             }
-            catch(Exception e)
+            catch(Exception message)
             {
-                throw new Exception(e.Message);
+                DisplayError();
+                throw new Exception(message.Message);
             }
         }
-        public bool CheckPasswordIsEqual(string password, string passwordRepeat)
+        static public bool CheckPasswordIsEqual(string password, string passwordRepeat)
         {
             return password == passwordRepeat;
         }
-        public bool PasswordValidation(string password)
+        static public bool PasswordValidation(string password)
         {
             string specialCharacterPattern = @"[^\\p{L}\\p{N}\\s]";
             return password.Length > 8 && Regex.IsMatch(password, specialCharacterPattern) && Regex.IsMatch(password, @"\d");
+        }
+        static public void DisplayError()
+        {
+            ViewError error = new();
+            error.InitInfo();
         }
     }
 }

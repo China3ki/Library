@@ -1,4 +1,6 @@
 ﻿using Library.Views;
+using Library.Views.formView;
+using Library.Views.SingleMenu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace Library.Components
             {
                 case ViewsList.Intro:
                     ViewIntro intro = new();
-                    intro.InitIntro();
+                    intro.InitInfo();
                     return ViewsList.Start;
                 case ViewsList.Start:
                     ViewStart start = new();

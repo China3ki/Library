@@ -22,32 +22,13 @@ namespace Library.Components
             _fontColorList.Add(fontColor);
             _backgroundColorList.Add(backgroundColor);
         }
-        private void RenderMenu()
-        {
-            for (int i = 0; i < Menu.Count; i++)
-            {
-                Console.SetCursorPosition(2, i);
-                if (i == 1)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.BackgroundColor = ConsoleColor.Black;
-                }
-                else
-                {
-                    Console.ForegroundColor = _fontColorList[i];
-                    Console.BackgroundColor = _backgroundColorList[i];
-                }
-                Console.Write(Menu[i]);
-                Console.ResetColor();
-            }
-        }
         /// <summary>
         /// Renders a border around the edges of the console window using box-drawing characters.
         /// </summary>
         /// <remarks>The border is drawn using Unicode box-drawing characters, including corners,
         /// horizontal lines,  and vertical lines. This method assumes the console window dimensions are accessible via 
         /// <see cref="Console.WindowWidth"/> and <see cref="Console.WindowHeight"/>.</remarks>
-        private void RenderBorder()
+        public void RenderBorder()
         {
             int width = Console.WindowWidth - 1;
             int height = Console.WindowHeight - 1;
@@ -69,6 +50,25 @@ namespace Library.Components
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.Write(headerLogo);
             Console.ResetColor();
+        }
+        private void RenderMenu()
+        {
+            for (int i = 0; i < Menu.Count; i++)
+            {
+                Console.SetCursorPosition(2, i);
+                if (i == 1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
+                else
+                {
+                    Console.ForegroundColor = _fontColorList[i];
+                    Console.BackgroundColor = _backgroundColorList[i];
+                }
+                Console.Write(Menu[i]);
+                Console.ResetColor();
+            }
         }
         public void ChangeColorOfMenu(int position, int prevPosition)
         {

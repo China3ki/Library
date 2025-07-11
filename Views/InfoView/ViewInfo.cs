@@ -1,46 +1,30 @@
-﻿using System;
+﻿using Library.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library.Views
+namespace Library.Views.SingleMenu
 {
-    internal class ViewIntro
+    abstract internal class ViewInfo
     {
-        private List<string> _logo = [
-            "  _     _ _                          ", 
-            " | |   (_) |__  _ __ __ _ _ __ _   _ ",
-            " | |   | | '_ \\| '__/ _` | '__| | | |",
-            " | |___| | |_) | | | (_| | |  | |_| |",
-            " |_____|_|_.__/|_|  \\__,_|_|   \\__, |",
-            "                               |___/ "
-        ];
-        /// <summary>
-        /// Initializes the introductory sequence by rendering and loading the necessary components.
-        /// </summary>
-        /// <remarks>This method is typically called at the start of an application or process to set up
-        /// the introduction. It ensures that the introductory content is displayed and prepared for further
-        /// interaction.</remarks>
-        public void InitIntro()
-        {
-            RenderIntro();
-            LoadingIntro();
-            Thread.Sleep(300);
-            Console.Clear();
-        }
+        protected List<string> _header = [];
+        protected RenderManager _renderManager = new();
+        protected NotificationManager _notifcationManager = new();
+        abstract public void InitInfo();
         /// <summary>
         /// Renders the introductory logo to the console.
         /// </summary>
         /// <remarks>This method positions each line of the logo at the center of the console window. It
         /// assumes that the logo is stored as a collection of strings, where each string represents a line of the
         /// logo.</remarks>
-        private void RenderIntro()
+        protected void RenderHeader()
         {
-            for(int i = 0; i < _logo.Count; i++)
+            for(int i = 0; i < _header.Count; i++)
             {
-                Console.SetCursorPosition(GetCenterOfWidth(_logo[i].Length), GetCenterOfHeight(i));
-                Console.Write(_logo[i]);
+                Console.SetCursorPosition(GetCenterOfWidth(_header[i].Length), GetCenterOfHeight(i));
+                Console.Write(_header[i]);
             }
         }
         /// <summary>
@@ -49,7 +33,7 @@ namespace Library.Views
         /// <remarks>This method creates a visual loading sequence by drawing a progress bar and updating
         /// the percentage displayed in the console. The animation is rendered using console cursor positioning and
         /// includes decorative borders around the progress bar.</remarks>
-        private void LoadingIntro()
+        protected void Loading()
         {
             int count = 0;
             for(int x = 0; x <= 27 ; x++)
@@ -75,6 +59,14 @@ namespace Library.Views
                 count++;
             }
         }
+        protected void WaitForAction()
+        {
+            ConsoleKey key;
+            do
+            {
+                key = Console.ReadKey(true).Key;
+            } while (key != ConsoleKey.Enter);
+        }
         /// <summary>
         /// Calculates the horizontal position needed to center a line of text within the console window.
         /// </summary>
@@ -90,9 +82,9 @@ namespace Library.Views
         /// </summary>
         /// <param name="lineIndex">The index of the line within the logo, where 0 represents the first line.</param>
         /// <returns>The vertical position of the specified line, relative to the center of the console window height.</returns>
-        private int GetCenterOfHeight(int lineIndex)
+        protected int GetCenterOfHeight(int lineIndex)
         {
-            return Console.WindowHeight / 2 - _logo.Count / 2 + lineIndex ;
+            return Console.WindowHeight / 2 - _header.Count / 2 + lineIndex ;
         }
     }
 }
