@@ -1,6 +1,7 @@
 ﻿using Library.Views;
 using Library.Views.formView;
 using Library.Views.SingleMenu;
+using Library.Views.UserView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +24,18 @@ namespace Library.Components
                     ViewStart start = new();
                     start.InitView();
                     return start.NextView();
-                case ViewsList.Login:
-                    ViewLogin login = new();
-                    login.InitView();
-                    return login.NextView();
                 case ViewsList.Register:
                     ViewRegister register = new();
                     register.InitView();
                     return register.NextView();
+                case ViewsList.Login:
+                    ViewLogin login = new();
+                    login.InitView();
+                    return login.NextView();
+                case ViewsList.MainMenuUser:
+                    ViewMainUser viewMainUser = new();
+                    viewMainUser.InitView();
+                    return viewMainUser.NextView();
                 default:
                     throw new NotImplementedException("a");
             }

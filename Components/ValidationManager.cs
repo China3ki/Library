@@ -10,7 +10,7 @@ namespace Library.Components
 {
     internal class ValidationManager
     {    
-        static private string _sqlStringConnection = "server=localhost;uid=root;database=library";
+        static private string _sqlConnectionString = "server=localhost;uid=root;database=library";
         static public bool CheckDataInInputExist(string nickname, string password, string passwordRepeat)
         {
             return nickname.Length != 0 && password.Length != 0 && passwordRepeat.Length != 0;
@@ -23,7 +23,7 @@ namespace Library.Components
         {
             try
             {
-                using (MySqlConnection connection = new(_sqlStringConnection))
+                using (MySqlConnection connection = new(_sqlConnectionString))
                 {
                     connection.Open();
                     MySqlCommand command = new("Select COUNT(user_password) FROM users WHERE user_password = @password AND user_nickname = @nickname", connection);
@@ -44,7 +44,7 @@ namespace Library.Components
         {
             try
             {
-                using(MySqlConnection connection = new(_sqlStringConnection))
+                using(MySqlConnection connection = new(_sqlConnectionString))
                 {
                     connection.Open();
                     MySqlCommand command = new("Select COUNT(user_nickname) FROM users WHERE user_nickname = @nickname", connection);

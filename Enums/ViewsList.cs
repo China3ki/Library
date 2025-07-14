@@ -5,5 +5,9 @@ enum ViewsList
     Start,
     Login,
     Register,
+    MainMenuUser,
+    Categories,
+    UserData,
+    Logout,
     Exit
 }

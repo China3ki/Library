@@ -98,7 +98,7 @@ namespace Library.Views.formView
         {
             try
             {
-                using (MySqlConnection connection = new("server=localhost;uid=root;database=library"))
+                using (MySqlConnection connection = new(_sqlConnectionString))
                 {
                     connection.Open();
                     MySqlCommand command = new("INSERT INTO users (user_type, user_nickname, user_password) VALUES (2, @nickname, @password)", connection);

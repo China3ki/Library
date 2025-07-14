@@ -1,0 +1,5 @@
+﻿enum UserTypeList 
+{
+    User,
+    Admin
+}

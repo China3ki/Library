@@ -32,7 +32,7 @@ namespace Library.Views.SingleMenu
         }
         public void ErrorConnection()
         {
-            Console.Clear();
+            _notifcationManager.ClearNotification();
             _notifcationManager.AddNotification("Nie można połączyć się z bazą danych!", ConsoleColor.Red, ConsoleColor.Black);
             _notifcationManager.AddNotification("Spróbuj ponownie póżniej.", ConsoleColor.Yellow, ConsoleColor.Black);
             _notifcationManager.AddNotification("Kliknij ENTER aby wyjść z aplikacji.", ConsoleColor.Yellow);
@@ -40,7 +40,7 @@ namespace Library.Views.SingleMenu
         }
         public void ErrorView()
         {
-            Console.Clear();
+            _notifcationManager.ClearNotification();
             _notifcationManager.AddNotification("Podany widok nie istnieje!", ConsoleColor.Red, ConsoleColor.Black);
             _notifcationManager.AddNotification("Spróbuj ponownie póżniej.", ConsoleColor.Yellow, ConsoleColor.Black);
             _notifcationManager.AddNotification("Kliknij ENTER aby wyjść z aplikacji.", ConsoleColor.Yellow);
