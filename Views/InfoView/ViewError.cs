@@ -23,16 +23,28 @@ namespace Library.Views.SingleMenu
         }
         public override void InitInfo()
         {
-            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             RenderHeader();
             Console.ResetColor();
-            _notifcationManager.AddNotification("Nie można połączyć się z bazą danych!", ConsoleColor.Red, ConsoleColor.Black);
-            _notifcationManager.AddNotification("Spróbuj ponownie póżniej.", ConsoleColor.Yellow, ConsoleColor.Black);
-            _notifcationManager.DisplayNotification();
             _renderManager.RenderBorder();
             WaitForAction();
             Environment.Exit(0);
+        }
+        public void ErrorConnection()
+        {
+            Console.Clear();
+            _notifcationManager.AddNotification("Nie można połączyć się z bazą danych!", ConsoleColor.Red, ConsoleColor.Black);
+            _notifcationManager.AddNotification("Spróbuj ponownie póżniej.", ConsoleColor.Yellow, ConsoleColor.Black);
+            _notifcationManager.AddNotification("Kliknij ENTER aby wyjść z aplikacji.", ConsoleColor.Yellow);
+            _notifcationManager.DisplayNotification();
+        }
+        public void ErrorView()
+        {
+            Console.Clear();
+            _notifcationManager.AddNotification("Podany widok nie istnieje!", ConsoleColor.Red, ConsoleColor.Black);
+            _notifcationManager.AddNotification("Spróbuj ponownie póżniej.", ConsoleColor.Yellow, ConsoleColor.Black);
+            _notifcationManager.AddNotification("Kliknij ENTER aby wyjść z aplikacji.", ConsoleColor.Yellow);
+            _notifcationManager.DisplayNotification();
         }
     }
 }

@@ -13,19 +13,43 @@ namespace Library.Components
         private List<ConsoleColor> _notificationsFontColor = [];
         private List<ConsoleColor> _notificationsBackgroundColor = [];
         /// <summary>
-        /// Adds a notification with specified text and display colors to the notification list.
+        /// Adds a notification with specified text and display colors.
         /// </summary>
-        /// <remarks>This method stores the notification text along with its associated font and
-        /// background colors. The colors are intended for use in rendering the notification, but the method itself does
-        /// not perform any rendering.</remarks>
+        /// <remarks>This method stores the notification along with its associated font and background
+        /// colors. The colors are intended for display purposes and should be chosen to ensure readability.</remarks>
         /// <param name="notification">The text of the notification to be added. Cannot be null or empty.</param>
-        /// <param name="fontColor">The font color to be used when displaying the notification.</param>
-        /// <param name="backgroundColor">The background color to be used when displaying the notification.</param>
+        /// <param name="fontColor">The color of the text for the notification. Must be a valid <see cref="ConsoleColor"/> value.</param>
+        /// <param name="backgroundColor">The background color for the notification. Must be a valid <see cref="ConsoleColor"/> value.</param>
         public void AddNotification(string notification, ConsoleColor fontColor, ConsoleColor backgroundColor)
         {
             _notifications.Add(notification);
             _notificationsFontColor.Add(fontColor);
             _notificationsBackgroundColor.Add(backgroundColor);
+        }
+        /// <summary>
+        /// Adds a notification message with the specified font color to the notification list.
+        /// </summary>
+        /// <remarks>The notification is added with a default background color of <see
+        /// cref="ConsoleColor.Black"/>.</remarks>
+        /// <param name="notification">The notification message to add. Cannot be null or empty.</param>
+        /// <param name="fontColor">The font color to use for displaying the notification.</param>
+        public void AddNotification(string notification, ConsoleColor fontColor)
+        {
+            _notifications.Add(notification);
+            _notificationsFontColor.Add(fontColor);
+            _notificationsBackgroundColor.Add(ConsoleColor.Black);
+        }
+        /// <summary>
+        /// Adds a notification to the collection with default font and background colors.
+        /// </summary>
+        /// <remarks>The notification is added with a default font color of <see
+        /// cref="ConsoleColor.White"/>  and a default background color of <see cref="ConsoleColor.Black"/>.</remarks>
+        /// <param name="notification">The notification message to add. Cannot be null or empty.</param>
+        public void AddNotification(string notification)
+        {
+            _notifications.Add(notification);
+            _notificationsFontColor.Add(ConsoleColor.White);
+            _notificationsBackgroundColor.Add(ConsoleColor.Black);
         }
         /// <summary>
         /// Clears all notifications from the console display and removes them from the internal notification list.

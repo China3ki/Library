@@ -8,5 +8,6 @@ namespace Library.Users
 {
     static internal class User
     {
+        static public string Nickname { get; set; } = "";
     }
 }

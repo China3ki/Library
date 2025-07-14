@@ -11,11 +11,12 @@ namespace Library.Views.formView
     abstract internal class ViewForm
     {
         protected Form _form = new();
-        protected RenderManager _renderManagaer = new();
-        protected NotificationManager _notification = new();
+        protected RenderManager _renderManager = new();
+        protected NotificationManager _notificationManager = new();
         protected FieldType _action;
         abstract public void InitView();
+        abstract protected void HandleForm();
         abstract protected void InitForm();
-        abstract protected void HandleValidation();
+        abstract protected bool HandleValidation();
     }
 }

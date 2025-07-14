@@ -6,15 +6,13 @@ using MySql.Data.MySqlClient;
 
 namespace Library.Views.formView
 {
-    internal class ViewRegister : View, IView
+    internal class ViewRegister : ViewForm, IView
     {
-        private Form _form = new();
-        private FieldType _action;
         public override void InitView()
         {
-            AddMenuOptions(" == Rejestracja == ", ConsoleColor.Cyan);
-            AddNotification("Uzupełnij pola aby się zarejestrować.");
-            AddNotification("- Hasło musi mieć co najmniej 8 znaków, znak specjalny oraz liczbę.", ConsoleColor.Yellow);
+            _renderManager.AddMenuOptions(" == Rejestracja == ", ConsoleColor.Cyan, ConsoleColor.Black);
+            _notificationManager.AddNotification("Uzupełnij pola aby się zarejestrować.");
+            _notificationManager.AddNotification("- Hasło musi mieć co najmniej 8 znaków, znak specjalny oraz liczbę.", ConsoleColor.Yellow);
             _renderManager.InitMenu();
             _notificationManager.DisplayNotification();
             HandleForm();
@@ -26,7 +24,7 @@ namespace Library.Views.formView
         /// <remarks>This method initializes the form, processes user input to determine the selected
         /// action,  and validates the form data. If the user selects the cancel action, the method exits early. The
         /// method continues to reinitialize and validate the form until the validation succeeds.</remarks>
-        private void HandleForm()
+        protected override void HandleForm()
         {
             InitForm();
             do
@@ -42,7 +40,7 @@ namespace Library.Views.formView
         /// <remarks>This method configures the form with fields for entering a username, password, 
         /// confirming the password, toggling password visibility, and submitting or canceling the form. Each field is
         /// added with a specific type and position within the form layout.</remarks>
-        private void InitForm()
+        protected override void InitForm()
         {
             _form.AddField("Nazwa użytkownika:",FieldType.Text, 2,1);
             _form.AddField("Hasło:", FieldType.Password, 2, 2);
@@ -62,7 +60,7 @@ namespace Library.Views.formView
         /// <see langword="true"/>.</remarks>
         /// <returns><see langword="true"/> if all validation checks pass and the user data is successfully saved to the
         /// database;  otherwise, <see langword="false"/>.</returns>
-        private bool HandleValidation()
+        protected override bool HandleValidation()
         {
             string nickname = _form.GetDataFromField(0);
             string password = _form.GetDataFromField(1);
@@ -74,10 +72,10 @@ namespace Library.Views.formView
             if (!nicknameExist || !arePasswordsEqual || !passwordValidation || !inputValidation)
             {
                 _notificationManager.ClearNotification();
-                if (!inputValidation) AddNotification("Uzupełnij wszystkie dane!", ConsoleColor.Red);
-                if (!nicknameExist) AddNotification("Konto o takiej nazwie użytkownika już istnieje!", ConsoleColor.Red);
-                if (!arePasswordsEqual) AddNotification("Hasła nie są takie same!", ConsoleColor.Red);
-                if (!passwordValidation) AddNotification("Hasło nie spełnia wymagań!", ConsoleColor.Red);
+                if (!inputValidation) _notificationManager.AddNotification("Uzupełnij wszystkie dane!", ConsoleColor.Red);
+                if (!nicknameExist) _notificationManager.AddNotification("Konto o takiej nazwie użytkownika już istnieje!", ConsoleColor.Red);
+                if (!arePasswordsEqual) _notificationManager.AddNotification("Hasła nie są takie same!", ConsoleColor.Red);
+                if (!passwordValidation) _notificationManager.AddNotification("Hasło nie spełnia wymagań!", ConsoleColor.Red);
                 _notificationManager.DisplayNotification();
                 return false;
             }
@@ -104,9 +102,10 @@ namespace Library.Views.formView
                 {
                     connection.Open();
                     MySqlCommand command = new("INSERT INTO users (user_type, user_nickname, user_password) VALUES (2, @nickname, @password)", connection);
-                    command.Parameters.AddWithValue("nickname", nickname);
+                    command.Parameters.AddWithValue("nickname", nickname.Trim());
                     command.Parameters.AddWithValue("password", password);
                     command.ExecuteNonQuery();
+                    connection.Close();
                 }
             }
             catch(Exception message)

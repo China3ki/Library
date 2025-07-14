@@ -15,7 +15,11 @@ namespace Library.Components
         {
             return nickname.Length != 0 && password.Length != 0 && passwordRepeat.Length != 0;
         }
-        static public bool CheckThePassword(string nickname, string password)
+        static public bool CheckDataInInputExist(string nickname, string password)
+        {
+            return nickname.Length != 0 && password.Length != 0;
+        }
+        static public bool CheckData(string nickname, string password)
         {
             try
             {
@@ -25,7 +29,7 @@ namespace Library.Components
                     MySqlCommand command = new("Select COUNT(user_password) FROM users WHERE user_password = @password AND user_nickname = @nickname", connection);
                     command.Parameters.AddWithValue("nickname", nickname);
                     command.Parameters.AddWithValue("password", password);
-                    int passwordDb = (int)command.ExecuteScalar();
+                    int passwordDb = Convert.ToInt32(command.ExecuteScalar());
                     connection.Close();
                     return passwordDb != 0;
                 }

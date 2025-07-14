@@ -27,6 +27,7 @@ namespace Library.Views.SingleMenu
             _notifcationManager.AddNotification("Konto zostało pomyślnie!", ConsoleColor.Green, ConsoleColor.Black);
             _notifcationManager.AddNotification("Zostaniesz przeniesiony do strony logowania!", ConsoleColor.Yellow, ConsoleColor.Black);
             _notifcationManager.DisplayNotification();
+            _renderManager.RenderBorder();
             WaitForAction();
         }
     }
