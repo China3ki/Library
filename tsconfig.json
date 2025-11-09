@@ -1,0 +1,16 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "strict":  true,
+    "sourceMap": true,
+    "target": "es6",
+    "rootDir": "wwwroot/ts",
+    "outDir": "wwwroot/js"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
