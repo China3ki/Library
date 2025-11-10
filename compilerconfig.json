@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/Shared/_header.css",
+    "inputFile": "wwwroot/scss/Shared/_header.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Home.css",
+    "inputFile": "wwwroot/scss/Home.scss"
+  }
+]

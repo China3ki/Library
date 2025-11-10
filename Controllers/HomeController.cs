@@ -19,8 +19,8 @@ namespace Library.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<BookModel> bookList = await GetBooks();
-            return View(bookList);  
+            //List<BookModel> bookList = await GetBooks();
+            return View();  
         }
         private async Task<List<BookModel>> GetBooks()
         {

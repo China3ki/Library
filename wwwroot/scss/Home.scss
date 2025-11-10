@@ -1,0 +1,95 @@
+﻿@import "Shared/_header.scss";
+.join {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    background: url("../Images/new_account.png"), repeat;
+    background-size: 200px;
+    padding: 10px;
+    height: 600px;
+
+    .join__us {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: fit-content;
+        gap: 10px;
+        background-color: white;
+        padding: 10px;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 1);
+
+        .join__title {
+            color: $color;
+            border-bottom: 2px solid black;
+        }
+
+        .join__description {
+        }
+
+        .join__button {
+            padding: 10px;
+            border: none;
+            background-color: $color;
+            color: white;
+            font-size: 17px;
+            transition: .2s;
+            cursor: pointer;
+        }
+            .join__button:hover {
+                background-color: white;
+                color: $color;
+            }
+    }
+
+    .join__reviews {
+        .join__review {
+            position:relative;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            background-color:white;
+            max-width:400px;
+            padding:5px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 1);
+            .join__image {
+                position:absolute;
+                top:-40px;
+                width:60px;
+                height:60px;
+                object-fit:cover;
+                border-radius:50px;
+                border: 2px dashed $color;
+                padding:2px;
+                background-color:white;
+            }
+            .join__author {
+                margin-top:20px;
+                border-bottom:1px solid $color;
+                padding-bottom:2px;
+                font-size:18px;
+                font-weight: 500;
+            }
+            .join__description {
+                text-align:center;
+                padding:10px;
+            }
+            .join__bottom {
+                display:flex;
+                align-items:center;
+                gap:10px;
+                border-top: 2px dashed $color;
+                .join__logo {
+                    width:60px;
+                }
+                .join__site {
+                    font-size:20px;
+                    color:$color;
+                    font-weight:bold;
+                    font-style:italic;
+                }
+            }
+        }
+    }
+}
