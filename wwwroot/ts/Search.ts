@@ -37,8 +37,6 @@ const SearchAuthors = async (query: string) : Promise<Author[] | null>  => {
     if (fetchData.ok) return await fetchData.json();
     else return null;
 } 
-
-
 const RenderUsers = (users : User[] | null) => {
     const resultsHTML: HTMLElement | null = document.querySelector(".search__results--users");
     if (resultsHTML == null) return;
@@ -72,7 +70,6 @@ const RenderUsers = (users : User[] | null) => {
         );
     }
 }
-
 const RenderAuthors = (authors: Author[] | null) => {
     const resultsHTML: HTMLElement | null = document.querySelector(".search__results--authors");
     if (resultsHTML == null) return;
@@ -102,7 +99,6 @@ const RenderAuthors = (authors: Author[] | null) => {
         );
     }
 }
-
 const RenderBooks = async (books: Book[] | null) => {
     const resultsHTML: HTMLElement | null = document.querySelector(".search__results--books");
     if (resultsHTML == null) return;
@@ -119,7 +115,7 @@ const RenderBooks = async (books: Book[] | null) => {
                                 <div class="result__stats">
                                     <div class="result__stat">
                                         <span class="material-symbols-outlined result__icon">star</span>
-                                        <span class="result__rating">${book.averateRate == null ? 0 : book.averateRate}</span>
+                                        <span class="result__rating">${book.averateRate == null ? 0 :book.averateRate}</span>
                                     </div>
                                     <div class="result__stat">
                                         <span class="material-symbols-outlined result__icon">book</span>
@@ -133,6 +129,7 @@ const RenderBooks = async (books: Book[] | null) => {
         );
     }
 }
+
 
 interface User {
     userId: number,
@@ -162,4 +159,3 @@ document.querySelector(".header__search")?.addEventListener("focus", SearchFocus
 document.querySelector(".header__button--close")?.addEventListener("click", SearchFocusOut);
 document.querySelector(".search")?.addEventListener("click", SearchFocusOut);
 document.querySelector(".header__search")?.addEventListener('keyup', SearchController);
-window.addEventListener("wheel", HideHeaderNav);

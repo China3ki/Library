@@ -9,6 +9,7 @@
     background-size: 200px;
     padding: 10px;
     height: 600px;
+    user-select: none;
 
     .join__us {
         display: flex;
@@ -37,6 +38,7 @@
             transition: .2s;
             cursor: pointer;
         }
+
             .join__button:hover {
                 background-color: white;
                 color: $color;
@@ -44,52 +46,272 @@
     }
 
     .join__reviews {
+        position: relative;
+
         .join__review {
-            position:relative;
-            display: flex;
+            position: relative;
+            display: none;
             flex-direction: column;
-            align-items:center;
-            background-color:white;
-            max-width:400px;
-            padding:5px;
+            align-items: center;
+            background-color: white;
+            max-width: 400px;
+            padding: 5px;
             box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 1);
+            transition: .4s;
+            opacity: 0;
+            transform:scale(.8);
             .join__image {
-                position:absolute;
-                top:-40px;
-                width:60px;
-                height:60px;
-                object-fit:cover;
-                border-radius:50px;
+                position: absolute;
+                top: -40px;
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: 50px;
                 border: 2px dashed $color;
-                padding:2px;
-                background-color:white;
+                padding: 2px;
+                background-color: white;
             }
+
             .join__author {
-                margin-top:20px;
-                border-bottom:1px solid $color;
-                padding-bottom:2px;
-                font-size:18px;
+                margin-top: 20px;
+                border-bottom: 1px solid $color;
+                padding-bottom: 2px;
+                font-size: 18px;
                 font-weight: 500;
             }
+
             .join__description {
-                text-align:center;
-                padding:10px;
+                text-align: center;
+                padding: 10px;
             }
+
             .join__bottom {
-                display:flex;
-                align-items:center;
-                gap:10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
                 border-top: 2px dashed $color;
+
                 .join__logo {
-                    width:60px;
+                    width: 60px;
                 }
+
                 .join__site {
-                    font-size:20px;
-                    color:$color;
-                    font-weight:bold;
-                    font-style:italic;
+                    font-size: 20px;
+                    color: $color;
+                    font-weight: bold;
+                    font-style: italic;
+                }
+            }
+        }
+
+            .join__review.show {
+                display: flex;
+                z-index: 1;
+                opacity: 1;
+                transform:initial;
+            }
+
+            .join__review.left {
+                top: 0px;
+                position: absolute;
+                display: flex;
+                transform: translate(-50px, 0px) scale(.8);
+                z-index: 0;
+                opacity: 1;
+            }
+
+            .join__review.right {
+                top: 0px;
+                position: absolute;
+                display: flex;
+                transform: translate(50px, 0px) scale(.8);
+                z-index: 0;
+                 opacity:1;
+            }
+
+        .join__buttons {
+            display: flex;
+            justify-content: space-between;
+
+            .join__button {
+                font-size: 50px;
+                background-color: transparent;
+                border: none;
+                z-index: 3;
+                cursor: pointer;
+                transition: .2s;
+            }
+
+                .join__button.hide {
+                    visibility: hidden;
+                }
+        }
+
+        .join__button:hover {
+            background-color: rgba($color, .2);
+        }
+    }
+}
+.join--profile {
+    .join__profile {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+        padding: 20px;
+        gap: 20px;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 1);
+
+        .join__header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .join__picture {
+                width: 70px;
+                height: 70px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+            .join__panel {
+                display: flex;
+                flex-direction: column;
+
+                .join__username {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                .join__stats {
+                    display: flex;
+                    gap: 10px;
+
+                    .join__stat {
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        gap: 2px;
+
+                        .join__desc {
+                            border-top: 1px dashed $color;
+                            font-size: 15px;
+                        }
+                    }
                 }
             }
         }
     }
+
+    .join__nav {
+        display: flex;
+
+        .join__item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid black;
+            padding: 0px 10px 5px 10px;
+            transition: .2s;
+            cursor: pointer;
+        }
+
+            .join__item:hover {
+                color: $color;
+            }
+
+            .join__item.active {
+                border-bottom: 2px solid $color;
+            }
+    }
+
+    .join__main {
+        display: flex;
+        justify-content: start;
+        width: 100%;
+
+        .join__data {
+            display: none;
+            justify-content: center;
+            width: 100%;
+            gap: 10px;
+            max-width: 420px;
+            flex-wrap: wrap;
+            max-height:300px;
+            overflow:auto;
+            .join__user {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+
+                .join__avatar {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    object-fit: cover;
+                }
+            }
+
+                .join__user:hover .join__nick {
+                    transition: .2s;
+                    color: $color;
+                }
+
+            .join__cover {
+                width: 70px;
+                transition: .2s;
+            }
+
+            .join__leased {
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                width:100%;
+                transition:.2s;
+                padding: 2px 10px 2px 0px;
+                .join__cover--leased {
+                    width: 50px;
+                }
+            }
+            .join__leased:hover {
+                background-color:rgba(black, .1);
+            }
+
+            .join__cover:hover {
+                opacity: .8;
+            }
+        }
+
+            .join__data.show {
+                display: flex;
+            }
+    }
 }
+
+
+    @media only screen and (min-width: 768px) {
+        .join {
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            .join__us {
+                order: 2;
+            }
+
+            .join__reviews {
+                order: 1;
+
+                .join__review.left {
+                    transform: translate(-100px, 0px) scale(.8);
+                    z-index: 0;
+                }
+
+                .join__review.right {
+                    transform: translate(100px, 0px) scale(.8);
+                    z-index: 0;
+                }
+            }
+        }
+    }

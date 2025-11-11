@@ -29,7 +29,6 @@ body {
     border-bottom: 1px solid gray;
     max-height: 200px;
     transition: .2s;
-
     .header__head {
         display: flex;
         align-items: center;
@@ -118,7 +117,6 @@ body {
     left: 0px;
     top: 140px;
     height: 100%;
-
     .search__wrapper {
         display: flex;
         flex-direction: column;
@@ -127,7 +125,6 @@ body {
         overflow: auto;
         max-height: 600px;
         width: 100%;
-
         .search__header {
             padding: 0px 20px 2px 0px;
             border-bottom: 2px solid $color;
@@ -231,7 +228,7 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        z-index:1;
+        z-index:3;
         background-color:white;
         .header__form {
             order:3;

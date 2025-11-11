@@ -151,5 +151,4 @@ const RenderBooks = (books) => __awaiter(void 0, void 0, void 0, function* () {
 (_b = document.querySelector(".header__button--close")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", SearchFocusOut);
 (_c = document.querySelector(".search")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", SearchFocusOut);
 (_d = document.querySelector(".header__search")) === null || _d === void 0 ? void 0 : _d.addEventListener('keyup', SearchController);
-window.addEventListener("wheel", HideHeaderNav);
 //# sourceMappingURL=Search.js.map
