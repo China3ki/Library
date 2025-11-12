@@ -13,6 +13,7 @@ body {
     display:flex;
     flex-direction:column;
     align-items:center;
+    height:200vh;
 }
 .wrapper {
     width:100%;
@@ -29,6 +30,9 @@ body {
     border-bottom: 1px solid gray;
     max-height: 200px;
     transition: .2s;
+    background-color: white;
+    z-index: 5;
+
     .header__head {
         display: flex;
         align-items: center;
@@ -66,7 +70,6 @@ body {
                 outline: none;
                 border-bottom: 2px solid $color;
             }
-
     }
 
     .header__login {
@@ -75,6 +78,11 @@ body {
         padding-left: 10px;
         font-size: 17px;
         font-weight: 500;
+        transition: .2s;
+        cursor:pointer;
+    }
+    .header__login:hover {
+        color: $color;
     }
 
     .header__nav {
@@ -94,7 +102,6 @@ body {
                 color: $color;
             }
     }
-
 }
 .header__button {
     position: absolute;
@@ -117,6 +124,7 @@ body {
     left: 0px;
     top: 140px;
     height: 100%;
+    z-index:5;
     .search__wrapper {
         display: flex;
         flex-direction: column;
@@ -228,8 +236,8 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        z-index:3;
         background-color:white;
+        z-index:6;
         .header__form {
             order:3;
         }
@@ -249,7 +257,6 @@ body {
         top: 0px;
         padding: 0px;
         background-color: rgba(black, .2);
-
         .search__wrapper {
             position:relative;
             top:81px;

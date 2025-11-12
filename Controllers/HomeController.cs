@@ -38,7 +38,7 @@ namespace Library.Controllers
         }
 
 
-        public IActionResult Privacy()
+        public IActionResult Login()
         {
             return View();
         }

@@ -2,63 +2,65 @@
 @{
     ViewData["Title"] = "Main";
 }
+<script src="~/js/components/index/reviews.js" asp-append-version="true" defer></script> 
+<script src="~/js/components/header.js" type="module" asp-append-version="true" defer></script>
 <main class="main">
-  @*   <section class="join">
+    <section class="join">
         <div class="join__us">
             <h1 class="join__title">Join us!</h1>
             <span class="join__description">Join to our family and be with our library!</span>
-            <button class="join__button">Join us</button>
+            <button data-open="search" class="join__button">Join us</button>
         </div>
         <div class="join__reviews">
             <div class="join__review left">
-                <img src="https://img.freepik.com/free-photo/beauty-portrait-female-face_93675-132046.jpg?semt=ais_hybrid&w=740&q=80" class="join__image" />
-                <span class="join__author">Jan Brzechwa</span>
-                <p class="join__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et tempor justo. Nam vel varius nisi. Suspendisse vel leo lobortis, placerat nulla non, imperdiet elit. Donec feugiat elit nisi, vel ornare turpis mattis sit amet. Integer lectus mauris, vehicula sed ultrices ac, fermentum non tellus. Nullam lobortis, odio sed mattis.</p>
+                <img src="~/images/reviewsPictures/pic1.webp" class="join__image" />
+                <span class="join__author">Roseline Mayers</span>
+                <p class="join__description">I started using this website a few months ago, and it completely changed how I read books.     Borrowing is quick, the collection keeps growing, and I love discovering titles I’d never find in a regular bookstore. It’s like having a virtual library that never closes.</p>
                 <div class="join__bottom">
                     <img class="join__logo" src="~/favicon.webp" />
                     <span class="join__site">Library</span>
                 </div>
             </div>
             <div class="join__review show">
-                <img src="https://img.freepik.com/free-photo/beauty-portrait-female-face_93675-132046.jpg?semt=ais_hybrid&w=740&q=80" class="join__image" />
-                <span class="join__author">Jan Brzechwa</span>
-                <p class="join__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et tempor justo. Nam vel varius nisi. Suspendisse vel leo lobortis, placerat nulla non, imperdiet elit. Donec feugiat elit nisi, vel ornare turpis mattis sit amet. Integer lectus mauris, vehicula sed ultrices ac, fermentum non tellus. Nullam lobortis, odio sed mattis.</p>
+                <img src="~/images/reviewsPictures/pic2.webp" class="join__image" />
+                <span class="join__author">Emma Collins</span>
+                <p class="join__description">This site makes reading so much easier and more affordable. I can borrow books anytime, return them when I’m done, and instantly pick something new. The interface is clean and intuitive — you can tell it was made by people who actually love books.</p>
                 <div class="join__bottom">
                     <img class="join__logo" src="~/favicon.webp"/>
                     <span class="join__site">Library</span>
                 </div>
             </div>
             <div class="join__review right">
-                <img src="https://img.freepik.com/free-photo/beauty-portrait-female-face_93675-132046.jpg?semt=ais_hybrid&w=740&q=80" class="join__image" />
-                <span class="join__author">Jan Brzechwa</span>
-                <p class="join__description">Lorem ipsum dolor ssdsdit amet, consectetur adipiscing elit. Vivamus et tempor justo. Nam vel varius nisi. Suspendisse vel leo lobortis, placerat nulla non, imperdiet elit. Donec feugiat elit nisi, vel ornare turpis mattis sit amet. Integer lectus mauris, vehicula sed ultrices ac, fermentum non tellus. Nullam lobortis, odio sed mattis.</p>
+                <img src="~/images/reviewsPictures/pic3.webp" class="join__image" />
+                <span class="join__author">Sophie Novak</span>
+                <p class="join__description">I was skeptical at first, but this service turned out to be amazing. The range of genres is impressive — from classics to new releases. The whole borrowing process is smooth, and I’ve already recommended it to my friends who read as much as I do.</p>
                 <div class="join__bottom">
                     <img class="join__logo" src="~/favicon.webp" />
                     <span class="join__site">Library</span>
                 </div>
             </div>
             <div class="join__review">
-                <img src="https://img.freepik.com/free-photo/beauty-portrait-female-face_93675-132046.jpg?semt=ais_hybrid&w=740&q=80" class="join__image" />
-                <span class="join__author">Jan Brzechwa</span>
-                <p class="join__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et tempor justo. Nam vel varius nisi. Suspendisse vel leo lobortis, placerat nulla non, imperdiet elit. Donec feugiat elit nisi, vel ornare turpis mattis sit amet. Integer lectus mauris, vehicula sed ultrices ac, fermentum non tellus. Nullam lobortis, odio sed mattis.</p>
+                <img src="~/images/reviewsPictures/pic4.webp" class="join__image" />
+                <span class="join__author">Daniel Kim</span>
+                <p class="join__description">As someone who reads a lot, I’ve always struggled with space and money for new books. This site solved both problems. Now I can explore as many titles as I want without worrying about where to store them or how much they cost. It’s brilliant.</p>
                 <div class="join__bottom">
                     <img class="join__logo" src="~/favicon.webp" />
                     <span class="join__site">Library</span>
                 </div>
             </div>
             <div class="join__review">
-                <img src="https://img.freepik.com/free-photo/beauty-portrait-female-face_93675-132046.jpg?semt=ais_hybrid&w=740&q=80" class="join__image" />
-                <span class="join__author">Jan Brzechwa</span>
-                <p class="join__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et tempor justo. Nam vel varius nisi. Suspendisse vel leo lobortis, placerat nulla non, imperdiet elit. Donec feugiat elit nisi, vel ornare turpis mattis sit amet. Integer lectus mauris, vehicula sed ultrices ac, fermentum non tellus. Nullam lobortis, odio sed mattis.</p>
+                <img src="~/images/reviewsPictures/pic5.webp" class="join__image" />
+                <span class="join__author">Lucy Walker</span>
+                <p class="join__description">I’m genuinely impressed by how simple and enjoyable this website makes book borrowing. It feels personal, not corporate. The system works perfectly, and I’ve found some rare gems here that I couldn’t get anywhere else. A must-visit for any reader.</p>
                 <div class="join__bottom">
                     <img class="join__logo" src="~/favicon.webp" />
                     <span class="join__site">Library</span>
                 </div>
             </div>
             <div class="join__review">
-                <img src="https://img.freepik.com/free-photo/beauty-portrait-female-face_93675-132046.jpg?semt=ais_hybrid&w=740&q=80" class="join__image" />
-                <span class="join__author">Jan Brzechwa</span>
-                <p class="join__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et tempor justo. Nam vel varius nisi. Suspendisse vel leo lobortis, placerat nulla non, imperdiet elit. Donec feugiat elit nisi, vel ornare turpis mattis sit amet. Integer lectus mauris, vehicula sed ultrices ac, fermentum non tellus. Nullam lobortis, odio sed mattis.</p>
+                <img src="~/images/reviewsPictures/pic6.webp" class="join__image" />
+                <span class="join__author">Amanda Granger</span>
+                <p class="join__description">This platform reminded me why I love reading. The design feels warm and personal, not cold like most digital libraries. I keep finding books I never knew existed — it’s become part of my daily routine..</p>
                 <div class="join__bottom">
                     <img class="join__logo" src="~/favicon.webp" />
                     <span class="join__site">Library</span>
@@ -69,8 +71,8 @@
                 <span class="material-symbols-outlined join__button join__button--right">arrow_right_alt</span>
             </div>
         </div>
-    </section> *@
-    <section class="join join--profile">
+    </section>
+  @*   <section class="join join--profile">
         <div class="join__profile">
             <div class="join__header">
                 <img class="join__picture" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ=" />
@@ -209,7 +211,7 @@
                         <span class="join__book--title">HarryPotter</span>
                         <span>12.11.2025</span>
                     </a>
-                     <a href="#" class="join__leased">
+                    <a href="#" class="join__leased">
                         <img class="join__cover--leased" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
                         <span class="join__book--title">HarryPotter</span>
                         <span>12.11.2025</span>
@@ -217,7 +219,249 @@
                 </div>
             </div>
         </div>
+    </section> *@
+    <section class = "section">
+        <div class="section__header">
+            <h1 class= "section__head">New books</h1>
+            <a class="section__more" href="#">More</a>
+        </div>
+        <div class= "section__books">
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+        </div>
+    </section>
+    <section class = "section">
+        <div class="section__header">
+            <h1 class="section__head">The best books</h1>
+            <a class="section__more" href="#">More</a>
+        </div>
+        <div class="section__books">
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+            <a href="#" class="section__book">
+                <div class="section__bookHeader">
+                    <img class="section__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+                <span class="section__title">Harry Potter and chambers of secrets</span>
+                <span class="section__author">J.K Rowling</span>
+            </a>
+        </div>
+    </section>
+    <section class="section section--categories">
+        <div class="section__header">
+            <h1 class="section__head">Categories</h1>
+            <a class="section__more" href="#">More</a>
+        </div>
+        <div class="section__categories">
+            <a href="#" class="section__category">history</a>
+            <a href="#" class="section__category">history</a>
+            <a href="#" class="section__category">history</a>
+            <a href="#" class="section__category">history</a>
+            <a href="#" class="section__category">history</a>
+            <a href="#" class="section__category">history</a>
+            <a href="#" class="section__category">history</a>
+            <a href="#" class="section__category">history</a>
+            <a href="#" class="section__category">history</a>
+        </div>
+    </section>
+    <section class = "section section--reviews" >
+        <div class="section__header">
+            <h1 class="section__head">Reviews</h1>
+            <a class="section__more" href="#">More</a>
+        </div>
+        <div class="section__reviews">
+            <div class="section__review">
+                <img class="section__avatar" src="https://www.shutterstock.com/image-photo/happy-attractive-young-adult-woman-600nw-2458168305.jpg" />
+                <a href="#" class="section__name">Jan Kowalski</a>
+                <a href="#" class="section__bookName">Harry Potter and chambers of secrets</a>
+                <p class="section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus elementum metus, non gravida nunc elementum nec. Proin accumsan tellus quis euismod condimentum. Praesent posuere dui quis urna euismod dapibus. Sed sed tellus sagittis, venenatis augue sed, fringilla turpis. Phasellus interdum velit ut metus tincidunt, eu ultricies metus congue. Sed.</p>
+                <div class="section__footer">
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section__review">
+                <img class="section__avatar" src="https://www.shutterstock.com/image-photo/happy-attractive-young-adult-woman-600nw-2458168305.jpg" />
+                <a href="#" class="section__name">Jan Kowalski</a>
+                <a href="#" class="section__bookName">Harry Potter and chambers of secrets</a>
+                <p class="section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus elementum metus, non gravida nunc elementum nec. Proin accumsan tellus quis euismod condimentum. Praesent posuere dui quis urna euismod dapibus. Sed sed tellus sagittis, venenatis augue sed, fringilla turpis. Phasellus interdum velit ut metus tincidunt, eu ultricies metus congue. Sed.</p>
+                <div class="section__footer">
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section__review">
+                <img class="section__avatar" src="https://www.shutterstock.com/image-photo/happy-attractive-young-adult-woman-600nw-2458168305.jpg" />
+                <a href="#" class="section__name">Jan Kowalski</a>
+                <a href="#" class="section__bookName">Harry Potter and chambers of secrets</a>
+                <p class="section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus elementum metus, non gravida nunc elementum nec. Proin accumsan tellus quis euismod condimentum. Praesent posuere dui quis urna euismod dapibus. Sed sed tellus sagittis, venenatis augue sed, fringilla turpis. Phasellus interdum velit ut metus tincidunt, eu ultricies metus congue. Sed.</p>
+                <div class="section__footer">
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section__review">
+                <img class="section__avatar" src="https://www.shutterstock.com/image-photo/happy-attractive-young-adult-woman-600nw-2458168305.jpg" />
+                <a href="#" class="section__name">Jan Kowalski</a>
+                <a href="#" class="section__bookName">Harry Potter and chambers of secrets</a>
+                <p class="section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus elementum metus, non gravida nunc elementum nec. Proin accumsan tellus quis euismod condimentum. Praesent posuere dui quis urna euismod dapibus. Sed sed tellus sagittis, venenatis augue sed, fringilla turpis. Phasellus interdum velit ut metus tincidunt, eu ultricies metus congue. Sed.</p>
+                <div class="section__footer">
+                    <div class="section__rating">
+                        <span class="material-symbols-outlined section__star">star</span>
+                        <span class="section__rate">2.5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </main>
-<script src="~/js/index.js" asp-append-version="true" defer></script>
-<script src="~/js/Search.js" asp-append-version="true" defer></script>
+

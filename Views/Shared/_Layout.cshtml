@@ -7,8 +7,43 @@
     <link rel="stylesheet" href="~/css/Home.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Library - @ViewData["Title"]</title>
+    @* Form To Change if user is login  *@
+    <script src="~/js/Auth/form.js" defer></script>
+     <script src="~/js/Auth/register.js" type="module" defer></script> 
 </head>
 <body>
+    <div class="forms">
+        <div class="forms__wrapper">
+            <span class="material-symbols-outlined forms__close">close</span>
+            <div class="forms__header">
+                <img class="forms__logo" src="~/favicon.webp" />
+                <h1 class="forms__title">Library</h1>
+            </div>
+            <ul class="forms__list">
+                <li data-option = "register" class="forms__option show">Register</li>
+                <li data-option = "login" class="forms__option">Login</li>
+            </ul>
+            @using(Html.BeginForm("", "", FormMethod.Post, new { @class = "forms__form show", @data_form= "register"})){
+                @Html.TextBox("nickname", null, new { @class = "forms__input", @placeholder = "Nickname"});
+                @Html.TextBox("email", null, new { @class = "forms__input", @placeholder = "Email"});
+                @Html.Password("password", null, new { @class = "forms__input", @placeholder = "Password", @autocomplete="on"});
+                @Html.Password("confirmedPassword", null, new { @class = "forms__input", @placeholder = "Confirmed password", @autocomplete = "on" });
+                <input class="forms__submit register" type="submit" value="Register"/>
+            }
+                @using(Html.BeginForm("", "", FormMethod.Post, new { @class = "forms__form", @data_form = "login" }))
+                {
+                    @Html.TextBox("loginEmail", null, new { @class = "forms__input", @placeholder = "Email"});
+                    @Html.Password("loginPassword", null, new { @class = "forms__input", @placeholder = "Password", @autocomplete="on"});
+                    <input class="forms__submit" type="submit" value="Register"/>
+                }
+                    <ul class="forms__requirements show">
+                        <li class="forms__requireme">- Atleast eight chraracters</li>
+                        <li class="forms__requireme">- One special character</li>
+                        <li class="forms__requireme">- One number</li>
+                    </ul>
+                <div class="forms__errors show"></div>
+            </div>
+    </div>
     <div class="wrapper">
         <header class="header">
            <a href="@Url.Action("Index", "Home")" class="header__head">
@@ -20,7 +55,7 @@
                 @Html.TextBox("search", null, new { @class = "header__search", @placeholder = "Book title, author name"});
                 <button class="material-symbols-outlined header__button" type="submit">search</button>
             }
-            <span class="header__login">LOGIN</span>
+            <span data-open="search" class="header__login">LOGIN</span> 
             <nav class="header__nav">
                 <a href="#" class="header__category">Categories</a>
                 <a href="#" class="header__category">Books</a>
@@ -40,6 +75,11 @@
             </div>
         </div>
         @RenderBody()
+        <footer class="footer">
+            <a href="https://github.com/China3ki" class="footer__author">China3ki</a>
+            <span class="footer__library">Library 2025 - All rights reserved</span>
+            <span></span>
+        </footer>
     </div>
 </body>
 </html>

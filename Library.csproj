@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\scss\Shared\_footer.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.9.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -16,8 +20,12 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\css\Admin\" />
-    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\js\Components\Index\" />
     <Folder Include="wwwroot\scss\Admin\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\scss\Shared\_footer.scss" />
   </ItemGroup>
 
 </Project>
