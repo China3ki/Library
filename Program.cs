@@ -9,13 +9,22 @@ namespace Library
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(option =>
+            {
+                option.IdleTimeout = TimeSpan.FromMinutes(10);
+            });
+
+
             builder.Services.AddHttpClient("LibraryAPI", c =>
             {
                 c.BaseAddress = new Uri("https://localhost:7051/");
             });
 
             var app = builder.Build();
-            
+
+            app.UseSession();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

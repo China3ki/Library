@@ -9,7 +9,7 @@
         const target: HTMLElement = e.target as HTMLElement;
         const data: string | undefined = target.dataset.option;
         const requirements: HTMLElement | null = document.querySelector(".forms__requirements");
-        const errors: HTMLElement | null = document.querySelector(".forms__errors");
+        const errors: HTMLElement | null = document.querySelector(".forms__info");
         if (data == undefined) return;
         for (const form of forms) {
             if (form == null) return;
@@ -17,14 +17,14 @@
             else form.classList.remove("show");
         }
         if (requirements == null) return;
-        if (data == "register") requirements.classList.add("show");
-        else requirements.classList.remove("show");
-
         if (errors == null) return;
-        if (data == "register") errors.classList.add("show");
-        else errors.classList.remove("show");
-
-
+        if (data == "register") {
+            requirements.classList.add("show");
+        }
+        else {
+            requirements.classList.remove("show");
+        }
+        errors.innerHTML = "";
         document.querySelectorAll(".forms__option").forEach(el => {
             el.classList.remove('show');
         })

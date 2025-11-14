@@ -23,7 +23,8 @@ export class Validation {
                 return false;
             if (!/[0-P]/.test(password))
                 return false;
-            //if (!/[(?=.*?[#?!@$%^&*-]]/.test(password)) return false;
+            if (!/(?=.*?[#?!@$%^&*-])/.test(password))
+                return false;
             return true;
         };
     }

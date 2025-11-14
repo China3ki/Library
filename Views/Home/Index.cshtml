@@ -2,77 +2,88 @@
 @{
     ViewData["Title"] = "Main";
 }
-<script src="~/js/components/index/reviews.js" asp-append-version="true" defer></script> 
-<script src="~/js/components/header.js" type="module" asp-append-version="true" defer></script>
+@if (string.IsNullOrEmpty(Context.Session.GetString("Id")))
+{
+    <script src="~/js/components/index/reviews.js" asp-append-version="true" defer></script> 
+}
+else
+{
+    <script src="~/js/components/Index/changeView.js" type="module" asp-append-version="true" defer></script>
+}
 <main class="main">
-    <section class="join">
-        <div class="join__us">
-            <h1 class="join__title">Join us!</h1>
-            <span class="join__description">Join to our family and be with our library!</span>
-            <button data-open="search" class="join__button">Join us</button>
-        </div>
-        <div class="join__reviews">
-            <div class="join__review left">
-                <img src="~/images/reviewsPictures/pic1.webp" class="join__image" />
-                <span class="join__author">Roseline Mayers</span>
-                <p class="join__description">I started using this website a few months ago, and it completely changed how I read books.     Borrowing is quick, the collection keeps growing, and I love discovering titles I’d never find in a regular bookstore. It’s like having a virtual library that never closes.</p>
-                <div class="join__bottom">
-                    <img class="join__logo" src="~/favicon.webp" />
-                    <span class="join__site">Library</span>
+   
+    @if(string.IsNullOrEmpty(Context.Session.GetString("Id")))
+    {
+        <section class="join">
+            <div class="join__us">
+                <h1 class="join__title">Join us!</h1>
+                <span class="join__description">Join to our family and be with our library!</span>
+                <button data-open="search" class="join__button">Join us</button>
+            </div>
+            <div class="join__reviews">
+                <div class="join__review left">
+                    <img src="~/images/reviewsPictures/pic1.webp" class="join__image" />
+                    <span class="join__author">Roseline Mayers</span>
+                    <p class="join__description">I started using this website a few months ago, and it completely changed how I read books.     Borrowing is quick, the collection keeps growing, and I love discovering titles I’d never find in a regular bookstore. It’s like having a virtual library that never closes.</p>
+                    <div class="join__bottom">
+                        <img class="join__logo" src="~/favicon.webp" />
+                        <span class="join__site">Library</span>
+                    </div>
+                </div>
+                <div class="join__review show">
+                    <img src="~/images/reviewsPictures/pic2.webp" class="join__image" />
+                    <span class="join__author">Emma Collins</span>
+                    <p class="join__description">This site makes reading so much easier and more affordable. I can borrow books anytime, return them when I’m done, and instantly pick something new. The interface is clean and intuitive — you can tell it was made by people who actually love books.</p>
+                    <div class="join__bottom">
+                        <img class="join__logo" src="~/favicon.webp" />
+                        <span class="join__site">Library</span>
+                    </div>
+                </div>
+                <div class="join__review right">
+                    <img src="~/images/reviewsPictures/pic3.webp" class="join__image" />
+                    <span class="join__author">Sophie Novak</span>
+                    <p class="join__description">I was skeptical at first, but this service turned out to be amazing. The range of genres is impressive — from classics to new releases. The whole borrowing process is smooth, and I’ve already recommended it to my friends who read as much as I do.</p>
+                    <div class="join__bottom">
+                        <img class="join__logo" src="~/favicon.webp" />
+                        <span class="join__site">Library</span>
+                    </div>
+                </div>
+                <div class="join__review">
+                    <img src="~/images/reviewsPictures/pic4.webp" class="join__image" />
+                    <span class="join__author">Daniel Kim</span>
+                    <p class="join__description">As someone who reads a lot, I’ve always struggled with space and money for new books. This site solved both problems. Now I can explore as many titles as I want without worrying about where to store them or how much they cost. It’s brilliant.</p>
+                    <div class="join__bottom">
+                        <img class="join__logo" src="~/favicon.webp" />
+                        <span class="join__site">Library</span>
+                    </div>
+                </div>
+                <div class="join__review">
+                    <img src="~/images/reviewsPictures/pic5.webp" class="join__image" />
+                    <span class="join__author">Lucy Walker</span>
+                    <p class="join__description">I’m genuinely impressed by how simple and enjoyable this website makes book borrowing. It feels personal, not corporate. The system works perfectly, and I’ve found some rare gems here that I couldn’t get anywhere else. A must-visit for any reader.</p>
+                    <div class="join__bottom">
+                        <img class="join__logo" src="~/favicon.webp" />
+                        <span class="join__site">Library</span>
+                    </div>
+                </div>
+                <div class="join__review">
+                    <img src="~/images/reviewsPictures/pic6.webp" class="join__image" />
+                    <span class="join__author">Amanda Granger</span>
+                    <p class="join__description">This platform reminded me why I love reading. The design feels warm and personal, not cold like most digital libraries. I keep finding books I never knew existed — it’s become part of my daily routine..</p>
+                    <div class="join__bottom">
+                        <img class="join__logo" src="~/favicon.webp" />
+                        <span class="join__site">Library</span>
+                    </div>
+                </div>
+                <div class="join__buttons">
+                    <span class="material-symbols-outlined join__button join__button--left">arrow_left_alt</span>
+                    <span class="material-symbols-outlined join__button join__button--right">arrow_right_alt</span>
                 </div>
             </div>
-            <div class="join__review show">
-                <img src="~/images/reviewsPictures/pic2.webp" class="join__image" />
-                <span class="join__author">Emma Collins</span>
-                <p class="join__description">This site makes reading so much easier and more affordable. I can borrow books anytime, return them when I’m done, and instantly pick something new. The interface is clean and intuitive — you can tell it was made by people who actually love books.</p>
-                <div class="join__bottom">
-                    <img class="join__logo" src="~/favicon.webp"/>
-                    <span class="join__site">Library</span>
-                </div>
-            </div>
-            <div class="join__review right">
-                <img src="~/images/reviewsPictures/pic3.webp" class="join__image" />
-                <span class="join__author">Sophie Novak</span>
-                <p class="join__description">I was skeptical at first, but this service turned out to be amazing. The range of genres is impressive — from classics to new releases. The whole borrowing process is smooth, and I’ve already recommended it to my friends who read as much as I do.</p>
-                <div class="join__bottom">
-                    <img class="join__logo" src="~/favicon.webp" />
-                    <span class="join__site">Library</span>
-                </div>
-            </div>
-            <div class="join__review">
-                <img src="~/images/reviewsPictures/pic4.webp" class="join__image" />
-                <span class="join__author">Daniel Kim</span>
-                <p class="join__description">As someone who reads a lot, I’ve always struggled with space and money for new books. This site solved both problems. Now I can explore as many titles as I want without worrying about where to store them or how much they cost. It’s brilliant.</p>
-                <div class="join__bottom">
-                    <img class="join__logo" src="~/favicon.webp" />
-                    <span class="join__site">Library</span>
-                </div>
-            </div>
-            <div class="join__review">
-                <img src="~/images/reviewsPictures/pic5.webp" class="join__image" />
-                <span class="join__author">Lucy Walker</span>
-                <p class="join__description">I’m genuinely impressed by how simple and enjoyable this website makes book borrowing. It feels personal, not corporate. The system works perfectly, and I’ve found some rare gems here that I couldn’t get anywhere else. A must-visit for any reader.</p>
-                <div class="join__bottom">
-                    <img class="join__logo" src="~/favicon.webp" />
-                    <span class="join__site">Library</span>
-                </div>
-            </div>
-            <div class="join__review">
-                <img src="~/images/reviewsPictures/pic6.webp" class="join__image" />
-                <span class="join__author">Amanda Granger</span>
-                <p class="join__description">This platform reminded me why I love reading. The design feels warm and personal, not cold like most digital libraries. I keep finding books I never knew existed — it’s become part of my daily routine..</p>
-                <div class="join__bottom">
-                    <img class="join__logo" src="~/favicon.webp" />
-                    <span class="join__site">Library</span>
-                </div>
-            </div>
-            <div class="join__buttons">
-                <span class="material-symbols-outlined join__button join__button--left">arrow_left_alt</span>
-                <span class="material-symbols-outlined join__button join__button--right">arrow_right_alt</span>
-            </div>
-        </div>
-    </section>
-  @*   <section class="join join--profile">
+        </section>
+    } 
+    else {
+    <section class="join join--profile">
         <div class="join__profile">
             <div class="join__header">
                 <img class="join__picture" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ=" />
@@ -91,13 +102,13 @@
                 </div>
             </div>
             <ul class="join__nav">
-                <li data-window = "followers" class="join__item active">Followers</li>
-                <li data-window = "followed" class="join__item">Followed</li>
-                <li data-window = "books" class="join__item">Favourite books</li>
-                <li data-window = "leased" class="join__item">Leased Books</li>
+                <li data-window="followers" class="join__item active">Followers</li>
+                <li data-window="followed" class="join__item">Followed</li>
+                <li data-window="books" class="join__item">Favourite books</li>
+                <li data-window="leased" class="join__item">Leased Books</li>
             </ul>
             <div class="join__main">
-                <div data-window = "followers" class="join__data show">
+                <div data-window="followers" class="join__data show">
                     <a class="join__user" href="#">
                         <img class="join__avatar" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ=" />
                         <span class="join__nick">Chinaski</span>
@@ -111,15 +122,15 @@
                         <span class="join__nick">Chinaski</span>
                     </a>
                     <a class="join__user" href="#">
-                        <img class="join__avatar" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ="/>
+                        <img class="join__avatar" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ=" />
                         <span class="join__nick">Chinaski</span>
                     </a>
                     <a class="join__user" href="#">
-                        <img class="join__avatar" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ="/>
+                        <img class="join__avatar" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ=" />
                         <span class="join__nick">Chinaski</span>
                     </a>
                     <a class="join__user" href="#">
-                        <img class="join__avatar" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ="/>
+                        <img class="join__avatar" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ=" />
                         <span class="join__nick">Chinaski</span>
                     </a>
                     <a class="join__user" href="#">
@@ -127,7 +138,7 @@
                         <span class="join__nick">Chinaski</span>
                     </a>
                 </div>
-                <div data-window = "followed" class="join__data">
+                <div data-window="followed" class="join__data">
                     <a class="join__user" href="#">
                         <img class="join__avatar" src="https://media.istockphoto.com/id/1471725712/pl/zdj%C4%99cie/u%C5%9Bmiechni%C4%99ta-m%C5%82oda-kobieta-robi%C4%85ca-selfie-podczas-relaksu-w-domu.jpg?s=612x612&w=0&k=20&c=DpwCipMQ1I0jIfSkyjlgvxhpwNvzP37-UrAwswLjClQ=" />
                         <span class="join__nick">Chinaski</span>
@@ -158,9 +169,9 @@
                         <span class="join__nick">Chinaski</span>
                     </a>
                 </div>
-                <div data-window = "books" class="join__data">
+                <div data-window="books" class="join__data">
                     <a href="#">
-                    <img class="join__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg"/>
+                        <img class="join__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
                     </a>
                     <a href="#">
                         <img class="join__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
@@ -190,7 +201,7 @@
                         <img class="join__cover" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
                     </a>
                 </div>
-                <div data-window = "leased" class="join__data">
+                <div data-window="leased" class="join__data">
                     <a href="#" class="join__leased">
                         <img class="join__cover--leased" src="https://s.lubimyczytac.pl/upload/books/5201000/5201943/1313324-352x500.jpg" />
                         <span class="join__book--title">HarryPotter</span>
@@ -219,7 +230,9 @@
                 </div>
             </div>
         </div>
-    </section> *@
+    </section>
+    }
+
     <section class = "section">
         <div class="section__header">
             <h1 class= "section__head">New books</h1>

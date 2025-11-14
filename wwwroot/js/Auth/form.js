@@ -7,7 +7,7 @@ class Forms {
             const target = e.target;
             const data = target.dataset.option;
             const requirements = document.querySelector(".forms__requirements");
-            const errors = document.querySelector(".forms__errors");
+            const errors = document.querySelector(".forms__info");
             if (data == undefined)
                 return;
             for (const form of forms) {
@@ -20,16 +20,15 @@ class Forms {
             }
             if (requirements == null)
                 return;
-            if (data == "register")
-                requirements.classList.add("show");
-            else
-                requirements.classList.remove("show");
             if (errors == null)
                 return;
-            if (data == "register")
-                errors.classList.add("show");
-            else
-                errors.classList.remove("show");
+            if (data == "register") {
+                requirements.classList.add("show");
+            }
+            else {
+                requirements.classList.remove("show");
+            }
+            errors.innerHTML = "";
             document.querySelectorAll(".forms__option").forEach(el => {
                 el.classList.remove('show');
             });

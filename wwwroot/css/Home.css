@@ -95,6 +95,19 @@ body {
 .header .header__nav .header__category:hover {
   color: rgb(0, 200, 255);
 }
+.header .header__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  order: 2;
+  justify-self: flex-end;
+}
+.header .header__user .header__avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50px;
+}
 
 .header__button {
   position: absolute;
@@ -231,6 +244,9 @@ body {
   }
   .header .header__nav {
     order: 2;
+  }
+  .header .header__user {
+    order: 4;
   }
   .header.active {
     max-height: initial;
@@ -387,22 +403,30 @@ body {
   display: flex;
   flex-direction: column;
 }
-.forms .forms__wrapper .forms__errors {
+.forms .forms__wrapper .forms__info {
   display: none;
   flex-direction: column;
   gap: 5px;
 }
-.forms .forms__wrapper .forms__errors .forms__error {
+.forms .forms__wrapper .forms__info .forms__error {
   padding: 8px;
   text-align: center;
   background-color: rgba(255, 0, 0, 0.2);
   width: 200px;
   border: 1px solid red;
 }
-.forms .forms__wrapper .forms__errors .forms__error:nth-child(1) {
+.forms .forms__wrapper .forms__info .forms__correct {
+  margin-top: 5px;
+  padding: 8px;
+  text-align: center;
+  background-color: rgba(0, 128, 0, 0.2);
+  width: 200px;
+  border: 1px solid green;
+}
+.forms .forms__wrapper .forms__info .forms__error:nth-child(1) {
   margin-top: 10px;
 }
-.forms .forms__wrapper .forms__errors.show {
+.forms .forms__wrapper .forms__info.show {
   display: flex;
 }
 

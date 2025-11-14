@@ -118,7 +118,7 @@
                 display:flex;
                 flex-direction:column;
             }
-            .forms__errors {
+            .forms__info{
                 display:none;
                 flex-direction:column;
                 gap:5px;
@@ -129,11 +129,19 @@
                     width:200px;
                     border:1px solid red;
                 }
+                .forms__correct {
+                    margin-top:5px;
+                    padding:8px;
+                    text-align:center;
+                    background-color:rgba(green, .2);
+                    width:200px;
+                    border:1px solid green;
+                }
                 .forms__error:nth-child(1) {
                     margin-top:10px;
                 }
             }
-            .forms__errors.show {
+            .forms__info.show {
                 display:flex;
             }
     }

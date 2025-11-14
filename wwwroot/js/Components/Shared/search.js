@@ -67,7 +67,7 @@ export class SearchEngine {
             for (const user of users) {
                 resultsHTML.insertAdjacentHTML("beforeend", ` 
                 <a href="%"  class="search__result user">
-                        <img src="${user.userImage == null ? "Images/avatar.png" : user.userImage}" class="result__image" />
+                        <img src="${user.userImage == null ? "/images/avatar.png" : user.userImage}" class="result__image" />
                         <div class="result__info">
                             <span class="result__title">${user.userNick}</span>
                             <div class="result__bottom">

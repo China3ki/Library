@@ -1,5 +1,9 @@
 using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
+using Library.Components;
 using Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -22,25 +26,27 @@ namespace Library.Controllers
             //List<BookModel> bookList = await GetBooks();
             return View();  
         }
-        private async Task<List<BookModel>> GetBooks()
+  
+        public IActionResult Logout()
         {
-            var fetch = await _client.GetAsync("/api/books?limit=2");
-
-            if (!fetch.IsSuccessStatusCode) return null;
-
-            var json = await fetch.Content.ReadAsStringAsync();
-
-
-            var deserialize = JsonConvert.DeserializeObject<List<BookModel>>(json);
-            
-
-            return deserialize;
+            Session.EndSession(HttpContext);
+            return RedirectToAction("Index");
         }
-
-
-        public IActionResult Login()
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterDto register)
         {
-            return View();
+            bool success = await Auth.Register(_client, register);
+            //if(!success) return
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginDto login)
+        {
+            bool success = await Auth.Login(_client, login);
+            //if (!success) 
+            await Session.StartSession(_client, HttpContext, login.LoginEmail);
+            return RedirectToAction("Index");
         }
     }
 }
