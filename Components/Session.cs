@@ -13,8 +13,8 @@ namespace Library.Components
             SessionModel data = await GetSessionData(client, email);
             context.Session.SetInt32("Id", data.UserId);
             context.Session.SetString("Nickname", data.UserNick);
-            Console.WriteLine(data.UserImage);
-            context.Session.SetString("Avatar", data.UserImage);
+            context.Session.SetString("Admin", data.UserAdmin.ToString());
+            context.Session.SetString("Avatar", data.UserImage == null ? "" :  data.UserImage);
         }
         static public async void EndSession(HttpContext context) => context.Session.Clear();
         static private async Task<SessionModel> GetSessionData(HttpClient client, string email)

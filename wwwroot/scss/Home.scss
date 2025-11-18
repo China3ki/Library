@@ -296,6 +296,9 @@
 .section {
     padding: 10px;
 
+    .section__notFound {
+        font-size:20px;
+    }
     .section__header {
         display: flex;
         justify-content: space-between;
@@ -337,6 +340,7 @@
 
                 .section__cover {
                     height: 230px;
+                    width:150px;
                     object-fit: cover;
                 }
 
@@ -408,6 +412,8 @@
             border-bottom: 1px solid black;
             padding-bottom: 10px;
             width: 300px;
+            height: 380px;
+            justify-content:center;
 
             .section__avatar {
                 width: 70px;
@@ -464,7 +470,7 @@
 
     .section__categories {
         display: grid;
-        align-content:center;
+        align-content: center;
         gap: 10px;
         padding: 20px 0px 0px 0px;
 
@@ -473,12 +479,13 @@
             padding: 10px;
             border-bottom: 1px solid $color;
             box-shadow: 0px 3px 9px -3px rgba(0, 0, 0, 1);
-            background-color:white;
+            background-color: white;
             transition: .2s;
         }
-        .section__category:hover {
-            transform: translateY(-10px);
-        }
+
+            .section__category:hover {
+                transform: translateY(-10px);
+            }
     }
 }
 

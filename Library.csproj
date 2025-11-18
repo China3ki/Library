@@ -19,9 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Css\Admin\" />
+    <Folder Include="wwwroot\css\Admin\" />
     <Folder Include="wwwroot\js\Components\Index\" />
-    <Folder Include="wwwroot\scss\Admin\" />
   </ItemGroup>
 
   <ItemGroup>

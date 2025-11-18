@@ -23,8 +23,17 @@ namespace Library.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //List<BookModel> bookList = await GetBooks();
-            return View();  
+            if(string.IsNullOrEmpty(HttpContext.Session.GetString("Id")))
+            {
+                var data = await ViewCreator.GetHomeData(_client);
+                return View(data);
+            }
+            else
+            {
+                var data = await ViewCreator.GetHomeSessionData(_client, (int)HttpContext.Session.GetInt32("Id"));
+                return View(data);
+            }
+            
         }
   
         public IActionResult Logout()

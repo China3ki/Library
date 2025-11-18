@@ -1,0 +1,63 @@
+﻿<link rel="stylesheet" href="~/css/Admin/Admin.css" />
+<script src="~/js/components/Admin/sorting.js" asp-append-version="true" defer></script>
+@model BooksModel;
+@{
+	ViewData["Title"] = "Admin";
+}
+<nav class="list">
+	<a class="list__option active" href="">Authors</a>
+	<a class="list__option" href="">Categories</a>
+	<a class="list__option" href="">Books</a>
+	<a class="list__option" href="">Users</a>
+</nav>
+<div class="add">
+	@Html.ActionLink("Add new book", "Create", "Books", null, new { @class = "add__button" })
+</div>
+@if (Model.Books == null)
+{
+	<span>Not found!</span>
+}
+else {
+<table class="table">
+	<tr class="table__headers">
+		<th class="table__head" data-sort="Id" data-sortType="Asc">Id</th>
+		<th class="table__head" data-sort="Title" data-sortType="Asc">Book title</th>
+		<th class="table__head" data-sort="Category" data-sortType="Asc">Category</th>
+		<th class="table__head" data-sort="Author" data-sortType="Asc">Author</th>
+		<th class="table__head" data-sort="Date" data-sortType="Asc">Book release</th>
+		<th>Options</th>
+	</tr>
+
+		@foreach(var book in Model.Books)
+		{
+			<tr>
+				<td>@book.BookId</td>
+				<td>@book.BookTitle</td>
+				<td>@book.CategoryName</td>
+				<td>@book.AuthorName @book.AuthorSurname</td>
+				<td>@book.BookReleaseDate</td>
+				<td class="table__cell">
+					@Html.ActionLink("Edit", "Edit", "Books", new { bookId = book.BookId }, new { @class = "table__edit"})
+				</td>
+			</tr>
+		}
+</table>
+<div class="pagination">
+	@{
+		@for(int i = 0; i < Model.Pagination; i++)
+		{
+			@Html.ActionLink($"{(i + 1)}", "Index", "Books", new { page = i + 1} , new { @class = "pagination__page active"});
+		}
+	}
+
+	@* <span class="pagination__page">2</span>
+	<span class="pagination__page">3</span>
+	<span class="pagination__page">4</span>
+	<span class="pagination__page">5</span>
+	<span class="pagination__page">6</span>
+	<span class="pagination__page">7</span>
+	<span class="pagination__page">8</span>
+	<span class="pagination__page">9</span>
+	<span class="pagination__page">10</span> *@
+</div>
+}

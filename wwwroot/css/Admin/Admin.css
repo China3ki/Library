@@ -280,3 +280,187 @@ body {
     margin-bottom: 10px;
   }
 }
+.footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid black;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  user-select: none;
+}
+.footer .footer__author:hover {
+  transition: 0.2s;
+  color: rgb(0, 200, 255);
+}
+.footer .footer__library {
+  justify-self: center;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 17px;
+  padding: 5px;
+}
+.list .list__option {
+  border-bottom: 2px solid rgb(0, 200, 255);
+  padding-bottom: 2px;
+  transition: 0.2s;
+}
+.list .list__option.active {
+  color: rgb(0, 200, 255);
+}
+.list .list__option:hover {
+  color: rgb(0, 200, 255);
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+}
+.add .add__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 200, 255);
+  color: white;
+  width: 100px;
+  height: 40px;
+  transition: 0.2s;
+  user-select: none;
+}
+.add .add__button:hover {
+  background-color: rgba(0, 200, 255, 0.5);
+  color: white;
+}
+.add .add__button:focus {
+  background-color: white;
+  color: rgb(0, 200, 255);
+}
+
+.table {
+  width: 100%;
+  text-align: center;
+  gap: 20px;
+  border: 1px solid black;
+  margin: 10px 0px 10px 0px;
+}
+.table .table__headers .table__head {
+  user-select: none;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.table .table__headers .table__head:hover {
+  background-color: rgba(0, 200, 255, 0.2);
+}
+.table .table__headers .table__head:active {
+  background-color: rgb(0, 200, 255);
+}
+.table th, .table td {
+  padding: 5px;
+  border: 1px solid black;
+}
+.table .table__cell {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.table .table__edit:hover {
+  transition: 0.2s;
+  color: rgb(0, 200, 255);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0px 10px 10px;
+}
+.pagination .pagination__page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 200, 255);
+  width: 30px;
+  height: 30px;
+}
+.pagination .pagination__page.active {
+  background-color: rgb(0, 200, 255);
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 25px 100px 25px 100px;
+}
+.form .form__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px 5px 0px;
+  border-bottom: 2px solid rgb(0, 200, 255);
+}
+.form .form__header .form__back {
+  transition: 0.2s;
+}
+.form .form__header .form__back:hover {
+  color: rgb(0, 200, 255);
+}
+.form .form__delete {
+  background-color: rgba(255, 0, 0, 0.5);
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+.form .form__delete:hover {
+  background-color: red;
+}
+.form .form__add {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.form .form__add .form__add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 200, 255);
+  color: white;
+  height: 40px;
+  width: 100px;
+  transition: 0.2s;
+}
+.form .form__add .form__add:hover {
+  color: rgb(0, 200, 255);
+  background-color: white;
+}
+.form .form__input {
+  width: 300px;
+  height: 40px;
+  padding: 5px;
+  font-size: 18px;
+}
+.form .form__input--file {
+  text-align: center;
+  background-color: rgb(0, 200, 255);
+  color: white;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.form .form__input--file:hover {
+  color: rgb(0, 200, 255);
+  background-color: white;
+}
+.form input[type=file] {
+  display: none;
+}
+.form .form__input.area {
+  width: 500px;
+  height: 250px;
+}

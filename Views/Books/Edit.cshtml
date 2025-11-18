@@ -1,0 +1,27 @@
+﻿@model CreateBookModel;
+<link rel="stylesheet" href="~/css/Admin/Admin.css" />
+<script src="~/js/components/Admin/sorting.js" asp-append-version="true" defer></script>
+@using (Html.BeginForm("UpdateBook", "Books", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form" }))
+{
+	<div class="form__header">
+		<h1 class="form__title">Edit Book</h1>
+		@Html.ActionLink("Back", "Index", "Books", new { page = 1 }, new { @class = "form__back" })
+	</div>
+	@Html.ActionLink("Delete Book", "DeleteBook", "Books", new { bookId = Model.Book.BookId }, new { @class = "form__delete" })
+	@Html.TextBox("BookId", Model.Book.BookId, new { @class = "form__input", @placeholder = "Id", @readonly = "readonly"})
+	@Html.TextBox("Title", Model.Book.BookTitle, new { @class = "form__input", @placeholder = "Title" })
+	@Html.TextArea("Description", Model.Book.BookDescription, new { @class = "form__input area", @placeholder = "Description" })
+	<div class="form__add">
+		@Html.DropDownList("CategoryId", Model.Categories, new { @class = "form__input", @placeholder = "Categories" })
+		@Html.ActionLink("Add category", "Create", "Categories", null, new { @class = "form__add" })
+	</div>
+	<div class="form__add">
+		@Html.DropDownList("AuthorId", Model.Authors, new { @class = "form__input", @placeholder = "Author" })
+		@Html.ActionLink("Add author", "Create", "Authors", null, new { @class = "form__add" })
+	</div>
+	@Html.TextBox("ReleaseDate", Model.Book.BookReleaseDate, new { @class = "form__input", @placeholder = "Release date", @type = "number" })
+	@Html.TextBox("Amount", Model.Book.BookAmount, new { @class = "form__input", @placeholder = "Amount", @type = "number" })
+	<label class="form__input form__input--file" for="Image">Upload Cover</label>
+	<input type="file" name="Image" id="Image" accept="image/*" />
+	<input type="submit" class="form__input submit" />
+}

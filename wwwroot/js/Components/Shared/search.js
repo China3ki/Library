@@ -22,21 +22,21 @@ export class SearchEngine {
             this.RenderUsers(users);
         });
         this.GetBooks = (query) => __awaiter(this, void 0, void 0, function* () {
-            const fetchData = yield fetch(`https://localhost:7051/api/Books/search/${query}`);
+            const fetchData = yield fetch(`https://localhost:7051/api/Search/books/${query}`);
             if (fetchData.ok)
                 return yield fetchData.json();
             else
                 return null;
         });
         this.GetUsers = (query) => __awaiter(this, void 0, void 0, function* () {
-            const fetchData = yield fetch(`https://localhost:7051/api/Users/search/${query}`);
+            const fetchData = yield fetch(`https://localhost:7051/api/Search/users/${query}`);
             if (fetchData.ok)
                 return yield fetchData.json();
             else
                 return null;
         });
         this.GetAuthors = (query) => __awaiter(this, void 0, void 0, function* () {
-            const fetchData = yield fetch(`https://localhost:7051/api/Authors/search/${query}`);
+            const fetchData = yield fetch(`https://localhost:7051/api/Search/authors/${query}`);
             if (fetchData.ok)
                 return yield fetchData.json();
             else

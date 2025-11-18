@@ -21,17 +21,17 @@ export class SearchEngine {
         this.RenderUsers(users);
     }
     GetBooks = async (query: string): Promise<Book[] | null> => {
-        const fetchData: Response = await fetch(`https://localhost:7051/api/Books/search/${query}`);
+        const fetchData: Response = await fetch(`https://localhost:7051/api/Search/books/${query}`);
         if (fetchData.ok) return await fetchData.json();
         else return null;
     }
     GetUsers = async (query: string): Promise<User[] | null> => {
-        const fetchData: Response = await fetch(`https://localhost:7051/api/Users/search/${query}`);
+        const fetchData: Response = await fetch(`https://localhost:7051/api/Search/users/${query}`);
         if (fetchData.ok) return await fetchData.json();
         else return null;
     };
     GetAuthors = async (query: string): Promise<Author[] | null> => {
-        const fetchData: Response = await fetch(`https://localhost:7051/api/Authors/search/${query}`);
+        const fetchData: Response = await fetch(`https://localhost:7051/api/Search/authors/${query}`);
         if (fetchData.ok) return await fetchData.json();
         else return null;
     } 

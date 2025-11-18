@@ -1,0 +1,175 @@
+﻿@import "../Shared/_header.scss";
+@import "../Shared/_footer.scss";
+
+.list {
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    font-size:17px;
+    padding:5px;
+    .list__option {
+        border-bottom: 2px solid $color;
+        padding-bottom: 2px;
+        transition: .2s;
+    }
+    .list__option.active {
+        color:$color;
+    }
+    .list__option:hover {
+        color: $color;
+    }
+}
+.add {
+    display: flex;
+    justify-content: center;
+    width:100%;
+    margin:10px 0px 10px 0px;
+    .add__button {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background-color: $color;
+        color: white;
+        width: 100px;
+        height:40px;
+        transition: .2s;
+        user-select:none;
+    }
+    .add__button:hover {
+        background-color: rgba($color, .5);
+        color:white;
+    }
+    .add__button:focus {
+        background-color: white;
+        color: $color;
+    }
+}
+.table {
+    width: 100%;
+    text-align: center;
+    gap: 20px;
+    border: 1px solid black;
+    margin: 10px 0px 10px 0px;
+    .table__headers {
+        .table__head {
+            user-select:none;
+            transition: .2s;
+            cursor:pointer;
+        }
+        .table__head:hover {
+            background-color: rgba($color, .2);
+        }
+        .table__head:active {
+            background-color: $color;
+        }
+    }
+    th, td {
+        padding: 5px;
+        border: 1px solid black;
+    }
+
+    .table__cell {
+        display: flex;
+        justify-content:center;
+        gap: 5px;
+    }
+    .table__edit:hover {
+        transition: .2s;
+        color: $color;
+    }
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0px 10px 10px;
+
+    .pagination__page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $color;
+        width: 30px;
+        height: 30px;
+    }
+
+    .pagination__page.active {
+        background-color: $color;
+        color: white;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 25px 100px 25px 100px;
+
+    .form__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px 5px 0px;
+        border-bottom: 2px solid $color;
+        .form__back {
+            transition: .2s;
+        }
+        .form__back:hover {
+            color:$color;
+        }
+    }
+    .form__delete {
+        background-color: rgba(red, .5);
+        width:fit-content;
+        padding:10px;
+        border-radius:10px;
+        transition: .2s;
+    }
+    .form__delete:hover {
+        background-color: red;
+    }
+    .form__add {
+        display:flex;
+        align-items:center;
+        gap:20px;
+        .form__add {
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background-color:$color;
+            color: white;
+            height:40px;
+            width:100px;
+            transition: .2s;
+        }
+        .form__add:hover {
+            color: $color;
+            background-color:white;
+        }
+    }
+    .form__input {
+        width: 300px;
+        height: 40px;
+        padding: 5px;
+        font-size: 18px;
+    }
+    .form__input--file {
+        text-align:center;
+        background-color: $color;
+        color:white;
+        transition: .2s;
+        cursor:pointer;
+    }
+    .form__input--file:hover {
+        color: $color;
+        background-color: white;
+    }
+    input[type="file"] {
+        display:none;
+    }
+
+        .form__input.area {
+            width: 500px;
+            height: 250px;
+        }
+}

@@ -1,0 +1,25 @@
+﻿@model CreateBookModel;
+<script src="~/js/Components/Admin/create.js" type="module" defer></script>
+<link rel="stylesheet" href="~/css/Admin/Admin.css" />
+@using (Html.BeginForm("Add", "Books", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form" }))
+{
+	 <div class="form__header">
+		<h1 class="form__title">Add Book</h1>
+		@Html.ActionLink("Back", "Index", "Books", new { page = 1 }, new { @class = "form__back"})
+	 </div>
+	 @Html.TextBox("Title", null, new { @class = "form__input", @placeholder = "Title"});
+	 @Html.TextArea("Description", null, new { @class="form__input area", @placeholder ="Description"} )
+	 <div class="form__add">
+		@Html.DropDownList("CategoryId", Model.Categories, new { @class = "form__input", @placeholder = "Categories"}) 
+		@Html.ActionLink("Add category", "Create", "Categories", null, new { @class = "form__add"})
+	</div>
+	<div class="form__add">
+	 @Html.DropDownList("AuthorId", Model.Authors, new { @class = "form__input", @placeholder = "Author"}) 
+	 @Html.ActionLink("Add author", "Create", "Authors", null, new { @class = "form__add"})
+	</div>
+	@Html.TextBox("ReleaseDate", null, new { @class = "form__input", @placeholder = "Release date", @type = "number" })
+	@Html.TextBox("Amount", null, new { @class = "form__input", @placeholder = "Amount", @type = "number"})
+	<label class="form__input form__input--file" for="Image">Upload Cover</label>
+	<input type="file" name="Image" id="Image" accept="image/*" />
+	 <input type="submit" class="form__input submit" />
+}

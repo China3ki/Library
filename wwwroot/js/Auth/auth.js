@@ -37,7 +37,7 @@ class Auth {
                 return;
             }
             const json = JSON.stringify(data.email);
-            const fetchData = yield fetch(`https://localhost:7051/api/AuthRegister/email/${data.email}`, {
+            const fetchData = yield fetch(`https://localhost:7051/api/Auth/email/${data.email}`, {
                 method: "POST",
                 body: json,
                 headers: {
@@ -47,14 +47,13 @@ class Auth {
             });
             if (!fetchData.ok) {
                 const res = yield fetchData.text();
-                console.log(res);
                 this.RenderError([res]);
                 return;
             }
             this.RenderInfo("Your account has been created!");
             setTimeout(() => {
                 form.submit();
-            }, 2000);
+            }, 1000);
         });
         this.Login = (e) => __awaiter(this, void 0, void 0, function* () {
             e.preventDefault();
@@ -91,7 +90,7 @@ class Auth {
             this.RenderInfo("Login succesful!");
             setTimeout(() => {
                 form.submit();
-            }, 2000);
+            }, 1000);
         });
         this.RenderInfo = (info) => {
             const infoHTML = document.querySelector(".forms__info");
