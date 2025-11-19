@@ -1,0 +1,16 @@
+﻿@model AuthorModel;
+<link rel="stylesheet" href="~/css/Admin/Admin.css" />
+@using (Html.BeginForm("UpdateAuthor", "Authors", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form" }))
+{
+	<div class="form__header">
+		<h1 class="form__title">Edit Author</h1>
+		@Html.ActionLink("Back", "Index", "Authors", new { page = 1 }, new { @class = "form__back" })
+	</div>
+	@Html.ActionLink("Delete Author", "DeleteAuthor", "Authors", new { AuthorId = Model.AuthorId }, new { @class = "form__delete" })
+	@Html.TextBox("AuthorId", Model.AuthorId, new { @class = "form__input", @placeholder = "Id", @readonly = "readonly" })
+	@Html.TextBox("AuthorName", Model.AuthorName, new { @class = "form__input", @placeholder = "Name" })
+	@Html.TextBox("AuthorSurname", Model.AuthorSurname, new { @class = "form__input", @placeholder = "Surname" })
+	<label class="form__input form__input--file" for="Image">Upload author image</label>
+	<input type="file" name="Image" id="Image" accept="image/*" />
+	<input type="submit" class="form__input submit" />
+}

@@ -1,13 +1,13 @@
 ﻿<link rel="stylesheet" href="~/css/Admin/Admin.css" />
-<script src="~/js/components/Admin/sorting.js" asp-append-version="true" defer></script>
+<script src="~/js/components/Admin/books.js" type="module" asp-append-version="true" defer></script>
 @model BooksModel;
 @{
 	ViewData["Title"] = "Admin";
 }
 <nav class="list">
-	<a class="list__option active" href="">Authors</a>
-	<a class="list__option" href="">Categories</a>
-	<a class="list__option" href="">Books</a>
+	@Html.ActionLink("Authors", "Index", "Authors", new { page = 1 }, new { @class = "list__option" })
+	@Html.ActionLink("Categories", "Index", "Categories", new { page = 1 }, new { @class = "list__option" })
+	@Html.ActionLink("Books", "Index", "Books", new { page = 1 }, new { @class = "list__option active" })
 	<a class="list__option" href="">Users</a>
 </nav>
 <div class="add">
@@ -49,15 +49,5 @@ else {
 			@Html.ActionLink($"{(i + 1)}", "Index", "Books", new { page = i + 1} , new { @class = "pagination__page active"});
 		}
 	}
-
-	@* <span class="pagination__page">2</span>
-	<span class="pagination__page">3</span>
-	<span class="pagination__page">4</span>
-	<span class="pagination__page">5</span>
-	<span class="pagination__page">6</span>
-	<span class="pagination__page">7</span>
-	<span class="pagination__page">8</span>
-	<span class="pagination__page">9</span>
-	<span class="pagination__page">10</span> *@
 </div>
 }

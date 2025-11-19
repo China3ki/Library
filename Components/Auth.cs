@@ -23,5 +23,10 @@ namespace Library.Components
             if (fetch.IsSuccessStatusCode) return true;
             else return false;
         }
+        static public bool CheckAdmin(HttpContext context)
+        {
+            if (string.IsNullOrEmpty(context.Session.GetString("Id")) || bool.Parse(context.Session.GetString("Admin")) == false) return false;
+            return true;
+        }
     }
 }

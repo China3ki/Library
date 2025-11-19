@@ -1,0 +1,13 @@
+﻿@model CategoryModel;
+<link rel="stylesheet" href="~/css/Admin/Admin.css" />
+@using (Html.BeginForm("UpdateBook", "Books", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form" }))
+{
+	<div class="form__header">
+		<h1 class="form__title">Edit Book</h1>
+		@Html.ActionLink("Back", "Index", "Categories", new { page = 1 }, new { @class = "form__back" })
+	</div>
+	@Html.ActionLink("Delete category", "DeleteCategory", "Categories", new { bookId = Model.CategoryId }, new { @class = "form__delete" })
+	@Html.TextBox("CategoryId", Model.CategoryId, new { @class = "form__input", @placeholder = "Id", @readonly = "readonly" })
+	@Html.TextBox("CategoryName", Model.CategoryName, new { @class = "form__input", @placeholder = "Category name" })
+	<input type="submit" class="form__input submit" />
+}

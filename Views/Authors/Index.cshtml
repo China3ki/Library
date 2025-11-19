@@ -1,0 +1,51 @@
+﻿<link rel="stylesheet" href="~/css/Admin/Admin.css" />
+<script src="~/js/components/Admin/Authors.js" type="module" asp-append-version="true" defer></script>
+@model AuthorsModel;
+@{
+	ViewData["Title"] = "Admin";
+}
+<nav class="list">
+	@Html.ActionLink("Authors", "Index", "Authors", new { page = 1 }, new { @class = "list__option active" })
+	@Html.ActionLink("Categories", "Index", "Categories", new { page = 1 }, new { @class = "list__option " })
+	@Html.ActionLink("Books", "Index", "Books", new { page = 1 }, new { @class = "list__option" })
+	<a class="list__option" href="">Users</a>
+</nav>
+<div class="add">
+	@Html.ActionLink("Add author", "Create", "Authors", null, new { @class = "add__button" })
+</div>
+@if (Model.Authors == null)
+{
+	<span>Not found!</span>
+}
+else
+{
+	<table class="table">
+		<tr class="table__headers">
+			<th class="table__head" data-sort="Id" data-sortType="Asc">Id</th>
+			<th class="table__head" data-sort="Name" data-sortType="Asc">Name</th>
+			<th class="table__head" data-sort="Surname" data-sortType="Asc">Surname</th>
+			<th>Options</th>
+		</tr>
+
+		@foreach (var author in Model.Authors)
+		{
+			<tr>
+				<td>@author.AuthorId</td>
+				<td>@author.AuthorName</td>
+				<td>@author.AuthorSurname</td>
+				<td class="table__cell">
+					@Html.ActionLink("Edit", "Edit", "Authors", new { authorId = author.AuthorId }, new { @class = "table__edit" })
+				</td>
+			</tr>
+		}
+	</table>
+	<div class="pagination">
+		@{
+			@for (int i = 0; i < Model.Pagination; i++)
+			{
+				@Html.ActionLink($"{(i + 1)}", "Index", "Authors", new { page = i + 1 }, new { @class = "pagination__page active" })
+				;
+			}
+		}
+	</div>
+}

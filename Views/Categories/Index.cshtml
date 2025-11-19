@@ -1,0 +1,47 @@
+﻿<link rel="stylesheet" href="~/css/Admin/Admin.css" />
+@model CategoriesModel;
+@{
+	ViewData["Title"] = "Admin";
+}
+<nav class="list">
+	@Html.ActionLink("Authors", "Index", "Authors", new { page = 1 }, new { @class = "list__option" })
+	@Html.ActionLink("Categories", "Index", "Categories", new { page = 1}, new { @class = "list__option active" })
+	@Html.ActionLink("Books", "Index", "Books", new { page = 1 }, new { @class = "list__option " })
+	@Html.ActionLink("Users", "Index", "Users", new { page = 1 }, new { @class = "list__option" })
+</nav>
+<div class="add">
+	@Html.ActionLink("Add new category", "Create", "Categories", null, new { @class = "add__button" })
+</div>
+@if (Model.Categories == null)
+{
+	<span>Not found!</span>
+}
+else
+{
+	<table class="table">
+		<tr class="table__headers">
+			<th class="table__head" data-sort="Id" data-sortType="Asc">Id</th>
+			<th class="table__head" data-sort="Category" data-sortType="Asc">Category</th>
+			<th>Options</th>
+		</tr>
+
+		@foreach (var book in Model.Categories)
+		{
+			<tr>
+				<td>@book.CategoryId</td>
+				<td>@book.CategoryName</td>
+				<td class="table__cell">
+					@Html.ActionLink("Edit", "Edit", "Categories", new { bookId = book.CategoryId }, new { @class = "table__edit" })
+				</td>
+			</tr>
+		}
+	</table>
+	<div class="pagination">
+		@{
+			@for (int i = 0; i < Model.Pagination; i++)
+			{
+				@Html.ActionLink($"{(i + 1)}", "Index", "Categories", new { page = i + 1 }, new { @class = "pagination__page active" })
+			}
+		}
+	</div>
+}

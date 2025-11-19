@@ -20,24 +20,21 @@ namespace Library.Controllers
             _logger = logger;
             _client = factory.CreateClient("LibraryAPI");
         }
-        public async Task<IActionResult> Index(int page)
+        public async Task<IActionResult> Index(int? page)
         {
-            if(!CheckAdmin()) return RedirectToAction("Index", "Home");
-            int startIndex = page == null ? 1 : (int)((page - 1) * 10);
-            BooksModel bookModel = await ViewCreator.GetBooksModel(_client, startIndex);
-            bookModel.Pagination = GetPagination(bookModel.Count);
+            if(!Auth.CheckAdmin(HttpContext)) return RedirectToAction("Index", "Home");
+            BooksModel bookModel = await ViewCreator.GetBooksModel(_client, page);
             return View(bookModel);
         }
         public async Task<IActionResult> Create()
         {
-            if (!CheckAdmin()) return RedirectToAction("Index", "Home");
+            if (!Auth.CheckAdmin(HttpContext)) return RedirectToAction("Index", "Home");
             CreateBookModel model = await ViewCreator.GetCreateBookModel(_client);
             return View(model);
         }
         public async Task<IActionResult> Edit(int bookId)
         {
-            if(!CheckAdmin()) return RedirectToAction("Index", "Home");
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Id")) || bool.Parse(HttpContext.Session.GetString("Admin")) == false) return RedirectToAction("Index", "Home");
+            if(!Auth.CheckAdmin(HttpContext)) return RedirectToAction("Index", "Home");
             CreateBookModel model = await ViewCreator.GetCreateBookModel(_client);
             model.Book = await Data.GetData<BookModel>(_client, $"/api/Books/{bookId}");
             return View(model);
@@ -90,18 +87,6 @@ namespace Library.Controllers
         {
             var fetch = await _client.DeleteAsync($"api/Books/{bookId}");
             return RedirectToAction("Index", "Books", new { page = 1 });
-        }
-        private bool CheckAdmin()
-        {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Id")) || bool.Parse(HttpContext.Session.GetString("Admin")) == false) return false;
-            return true;
-        }
-        private int GetPagination(int numberOfElements)
-        {
-            int divisior = 10;
-            float divide = ((float)numberOfElements / (float)divisior);
-            int pagination = divisior > numberOfElements ? 1 : (int)Math.Ceiling(divide);
-            return pagination;
         }
     }
 }

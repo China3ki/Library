@@ -67,7 +67,7 @@
                 <div class="header__user">
                         @if(bool.Parse(Context.Session.GetString("Admin")) == true)
                         {
-                        @Html.ActionLink("Admin Panel", "Index" , "Books",  new { page = "1"});
+                        @Html.ActionLink("Admin Panel", "Index" , "Authors",  new { page = "1"});
                         }
                     <a href="#">
                             <img class="header__avatar" src=@(string.IsNullOrEmpty(Context.Session.GetString("Avatar")) ? "/images/avatar.png" : Context.Session.GetString("Avatar")) alt=@Context.Session.GetString("Nickname") />
